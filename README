@@ -1,0 +1,38 @@
+1) First follow the various repository setup instructions at github (e.g.,
+    set up the appropriate ssh keys, etc.).
+It took me about 15 minutes to set up. Not sure if you need to give me your
+ID before you continue to 2), you could always try ;-)
+
+2) Get an initial local copy of the repository (i.e., paper source files)
+
+   git clone git@github.com:apinzke/ClusGray.git
+
+3) Set the remote git access:
+
+   git remote add origin git@github.com:apinzke/ClusGray.git
+
+4) In the future, decend into the local copy of repository and "pull"
+    new versions of the repository files to update them:
+
+    git pull origin master
+
+5) When you are finished editing, "commit" the changes (local) and "push"
+    the changes into the repository.  This will only affect files that git
+    already knows about (e.g., the temporary LaTex files won't suddenly be
+    added to the repository).
+
+    git commit -a -m "<Enter short summary of changes>"
+    git push origin master
+
+6) If you have files to add (e.g., new beautiful pictures!) or remove (e.g.,
+    a wrongly named figure, though this should never really be used)
+
+    git add<file>
+    git push origin master
+    or
+    git rm<file>
+    git push origin master
+
+
+
+
