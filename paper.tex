@@ -1,0 +1,447 @@
+% paper.tex - publication for Monthly Notices of the Royal Astronomical Society
+
+\documentclass[useAMS,usenatbib]{mn2e}
+\usepackage{txfonts}
+\usepackage{graphicx}
+\usepackage{natbib}
+
+\def\del#1{{}}
+%\def\del#1{{\bf (DELETED TEXT)}}
+\def\C#1{#1}
+%\def\C#1{{\bf #1}}
+
+\sloppy
+
+% --- macros --- %
+\newcommand{\icm}{intra-cluster medium}
+\newcommand{\cmb}{cosmic microwave background}
+
+% --- journals --- %
+\newcommand{\aap}{A{\&}A}
+\newcommand{\aaps}{A{\&}AS}
+\newcommand{\aj}{AJ}
+\newcommand{\apj}{ApJ}
+\newcommand{\apjl}{ApJL}
+\newcommand{\apjs}{ApJS}
+\newcommand{\apss}{Ap{\&}SS}
+\newcommand{\araa}{ARA{\&}A}
+\newcommand{\prd}{Phys. Rev. D}
+\newcommand{\pre}{PRE}
+\newcommand{\mnras}{MNRAS}
+\newcommand{\ssr}{SSRv}
+\newcommand{\nat}{Nature}
+\newcommand{\physrep}{Phys.~Rep.}
+\newcommand{\jcomp}{J.~Comput.~Phys.}
+
+% --- christoph's commands --- %
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\bra}{\langle}
+\newcommand{\ket}{\rangle}
+\newcommand{\ltsima}{$\; \buildrel < \over \sim \;$}
+\newcommand{\lsim}{\lower.5ex\hbox{\ltsima}}
+\newcommand{\gtsima}{$\; \buildrel > \over \sim \;$}
+\newcommand{\gsim}{\lower.5ex\hbox{\gtsima}}
+\newcommand{\eps}{\varepsilon}
+
+% --- Anders's commands --- %
+\newcommand{\ev}{\mathrm{eV}}
+\newcommand{\gev}{\mathrm{GeV}}
+\newcommand{\mev}{\mathrm{MeV}}
+\newcommand{\tev}{\mathrm{TeV}}
+\newcommand{\mpc}{m_{\mathrm{p}}c}
+\newcommand{\mpcc}{m_{\mathrm{p}}c^2}
+\newcommand{\p}{\mathrm{p}}
+\newcommand{\pp}{\mathrm{pp}}
+\newcommand{\br}{\bold{r}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\inj}{\mathrm{inj}}
+\newcommand{\pd}{\partial}
+\newcommand{\CR}{\mathrm{CR}}
+\newcommand{\gas}{\mathrm{gas}}
+\newcommand{\mr}{\mathrm}
+\newcommand{\DM}{\mathrm{DM}}
+\newcommand{\ISM}{\mathrm{ISM}}
+\newcommand{\ICM}{\mathrm{ICM}}
+\newcommand{\CMB}{\mathrm{CMB}}
+\newcommand{\IC}{\mathrm{IC}}
+\newcommand{\mecc}{m_\e c^2}
+\newcommand{\mug}{\mathrm{\mu G}}
+\newcommand{\rvir}{R_{200}}
+\newcommand{\B}{\mathrm{B}}
+\newcommand{\ma}{\mathrm{max}}
+\newcommand{\low}{\mathrm{low}}
+
+
+
+% --- title --- %
+\title{The origin of cosmic-ray electrons in cluster outskirts}
+
+\author[A. Pinzke, P. Oh and C. Pfrommer] 
+  {Anders Pinzke$^1$\thanks{e-mail:apinzke@physics.ucsb.edu (AP); peng@physics.ucsb.edu (PO);pfrommer@h-its.org (CP)}, Peng Oh$^1$\footnotemark[1],
+    and Christoph Pfrommer$^2$\footnotemark[1]\\
+    $^1$University of California - Santa Barbara,
+  Department of Physics, CA 93106-9530, USA\\
+    $^2$Heidelberg Institute for Theoretical Studies
+  (HITS), Schloss-Wolfsbrunnenweg 33, DE - 69118 Heidelberg, Germany}
+    
+
+% --- document --- %
+\begin{document}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}} \pubyear{2011}
+\maketitle
+\label{firstpage}
+
+
+% --- abstract --- %
+\begin{abstract}
+  bla bla bla
+\end{abstract}
+
+
+% --- keywords --- %
+\begin{keywords}
+  magnetic fields, cosmic rays, radiation mechanisms: non-thermal, elementary
+  particles, galaxies: cluster: general
+\end{keywords}
+
+% --- section: introduction --- %
+\section{Introduction}
+
+
+\section{Simulations}
+\label{sect:simulations}
+Our simulations were performed in a $\Lambda$CDM universe using the
+cosmological parameters: $\Omega_{\mr m}=\Omega_\DM + \Omega_{\mr
+  b}=0.3, \, \Omega_{\mr b}=0.039, \, \Omega_\Lambda=0.7, \, h=0.7, \,
+n_{\mr s}=1$, and $\sigma_8=0.9$. The total matter density in units of
+the critical density of the universe $\rho_{\rm crit}$ is denoted by
+$\Omega_{\mr m}$, the baryonic density by $\Omega_{\mr b}$, the DM
+density by $\Omega_\DM$ and the cosmological constant today is denoted
+by $\Omega_\Lambda$. The critical density, $\rho_{\rm crit}=3H_0/(8\pi
+G)$, where the present day Hubble constant $H_0=100\, h \, \mr{km}\,
+\mr{s}^{-1} \, \mr{Myr}^{-1}$. $n_{\mr s}$ represents the spectral
+index of the primordial power-spectrum, and $\sigma_8$ denotes the
+$rms$ linear mass fluctuation within a sphere of radius $8 \,h^{-1}
+\mr{Mpc}$ extrapolated to $z = 0$. The simulations were carried out
+with an updated and extended version of the distributed-memory
+parallel TreeSPH code GADGET-2 \citep{2005MNRAS.364.1105S,
+  2001NewA....6...79S}. Gravitational forces were computed using a
+combination of particle-mesh and tree algorithms.  Hydrodynamic forces
+are computed with a variant of the smoothed particle hydrodynamics
+(SPH) algorithm that conserves energy and entropy where appropriate,
+i.e. outside of shocked regions \citep{2002MNRAS.333..649S}.  Our
+simulations follow the radiative cooling of the gas, star formation,
+supernova feedback, and a photo-ionizing background \citep[details can
+  be found in][]{2007MNRAS.378..385P}. We model the cosmic ray (CR)
+physics in a self-consistent way \citep{2006MNRAS.367..113P,
+  2007A&A...473...41E, 2008A&A...481...33J}.  We include the adiabatic
+CR transport process such as compression and rarefaction, and a number
+of physical source and sink terms which modify the cosmic ray pressure
+of each CR population separately. The most important sources
+considered for injection are, diffusive shock acceleration at
+cosmological structure formation shocks and shock waves in supernova
+remnants, while the primary sinks are thermalization by Coulomb
+interactions, and catastrophic losses by hadronization. For
+simplicity, in this paper we do not take into account CRs injected
+into the inter-stellar medium from supernova remnants (see Pinzke, Oh,
+and Pfrommer, in prep. for a discussion of this topic).
+
+\subsection{CR protons}
+The CR proton distribution function is given by
+\begin{equation}
+  \label{eq:f_p}
+  f_\p(p_\p) = \frac{\dd^2 N_\p}{\dd p_\p\,\dd V} = 
+  C\, p_\p^{-\alpha}\,\theta(p_\p-q)\,, 
+\end{equation}
+and $p_\p = P_\p/m_\p c$, where we have normalized the proton momentum
+$P_\p$ with the proton mass $m_\p$.  Here $q$ is the normalized
+momentum cutoff, $\alpha$ the spectral index, and $C$ the
+normalization in units of density. 
+
+\del{From the galaxy cluster simulations
+we determine the adiabatic invariant Lagrangian amplitude of the
+spectrum $\tilde{C}_0$, where the adiabatic changes of the gas density
+$\rho$ change the normalization according to
+\begin{equation}
+  \label{eq:C0}
+  \tilde{C}=\left(\frac{\rho}{\rho_0}\right)^{-\frac{\alpha-1}{3}}\tilde{C}_0\,,
+\end{equation}
+and the convenient unitless redefinition of the amplitude is given by 
+\begin{equation}
+  \label{eq:Ct}
+  \tilde{C}=C\,m_\p/\rho\,.
+\end{equation}}
+
+From our simulated galaxy clusters we derive for each snapshot at time
+$t$ the injected CR proton distribution function $f_\p$. We select
+particles in the outskirts of clusters where the gas densities are low
+and hence the Coulomb cooling of the CR protons small. The CR proton
+distribution function from the simulations is parameterized in terms of
+adiabatic invariant momentum cutoff $q_0$ and the adiabatic invariant
+Lagrangian amplitude of the spectrum $\tilde{C}_0$. We convert the adiabatic invariant quantities to physical quantities through
+\begin{equation}
+  \label{eq:q0}
+  q=\left(\frac{\rho}{\rho_0}\right)^{\frac{1}{3}}q_0\,,
+\end{equation}
+and
+\begin{equation}
+  \label{eq:C0}
+  \tilde{C}=\left(\frac{\rho}{\rho_0}\right)^{-\frac{\alpha-1}{3}}\tilde{C}_0\,,
+\end{equation}
+where the convenient unitless redefinition of the CR proton amplitude
+is given by
+\begin{equation}
+  \label{eq:Ct}
+  \tilde{C}=C\,m_\p/\rho\,.
+\end{equation}
+The injected distribution function is calculated as the change in
+normalization between each snapshot, $f_\rmn{inj,p}(p_\p) = \Delta
+C\,p_\p^{-\alpha}$, and is derived through the formalism developed
+in \cite{2007A&A...473...41E} and \cite{2008A&A...481...33J}:
+\begin{eqnarray}
+  \label{eq:deltaC}
+  \Delta C(t+\Delta t) &=& C(t) 
+  \frac{\Delta \eps_\CR(t)-T_\p(q(t))\,\Delta n_\CR(t)}
+       {\eps_\CR(t) - T_\p(q(t))\,n_\CR(t)}\,,\quad\rmn{where}\nonumber\\
+       \Delta X(t) &=&  X(t+\Delta t) -  X(t)\,. 
+\end{eqnarray}
+We fix the time between each snapshot $\Delta t$ to $100$~Myrs, which
+is smaller then the loss timescale of CR electrons in cluster
+outskirts. The CR proton number density is given by
+\begin{equation}
+  \label{eq:ncr}
+  n_{\CR} = \int_0^\infty \dd p_\p\, f_\p(p_\p) =
+  \frac{C\, q^{1-\alpha}}{\alpha-1}\,,
+\end{equation}
+provided $\alpha >1$. The kinetic energy density of the CR
+proton population is
+\begin{eqnarray}
+  \label{eq:epscr}
+  \eps_\CR &=& \int_0^\infty  \dd p_\p\, f_\p(p_\p) \,T_{\rmn
+    p}(p_\p)=\frac{C\, m_\p\,c^2}{\alpha-1} \, \times
+  \nonumber \\
+  && \left[\frac{1}{2}
+    \, \B_{\frac{1}{1+q^2}} \left(
+    \frac{\alpha-2}{2},\frac{3-\alpha}{2}\right) + q^{1-\alpha}
+    \left(\sqrt{1+q^2}-1 \right) \right] \,,
+\end{eqnarray}
+where $T_\p(p_\p) = (\sqrt{1+p_\p^2} -1)\, m_\p\,c^2$ is the kinetic energy
+of a CR proton. $\B_x(a,b)$ denotes the incomplete Beta-function, and
+$\alpha>2$ is assumed. 
+
+
+\section{Radio relics}
+\label{section:relics}
+RELICS...  Collisionless cluster shocks are able to accelerate ions
+and electrons in the high-energy tail of their Maxwellian distribution
+functions through diffusive shock acceleration \citep[for reviews
+  see][]{1983RPPh...46..973D, 1987PhR...154....1B,
+  2001RPPh...64..429M}. Neglecting non-linear shock acceleration and
+cosmic ray modified shock structure, then electrons and protons are
+indistinguishable in the process of diffusive shock
+acceleration. There are, however, difference in: (1) the maximum
+energy of the steady state spectrum that depends on the details of the
+shock, (2) acceleration efficiency that is related to the smaller
+Larmor radius of the electrons that keeps the electrons from diffusing
+back and forth over the discontinuity of the shock front.CHECK
+
+In this section we derive the CR electron distribution function by
+rescaling the injected CR proton spectrum to account for the different
+acceleration efficiencies as well as the shift in momentum due to the
+factor $\sim 2000$ difference in mass. In addition we model the
+Coulomb and radiative losses of the CR electrons.
+
+\subsection{CR electron distribution function} 
+The injected CR electron distribution function at each time $t$ is
+given by
+\begin{eqnarray}
+  \label{eq:f_inj_e}
+  f_\rmn{inj,e}(p_\e) &=&  \frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd p_\e}(p_\e) = 
+\frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd p_\p}(p_\e)\frac{m_\e}{m_\p} \nonumber\\
+&=& \frac{\dd^2 N_\rmn{inj,p}}{\dd V \dd p_\p}(p_\p)
+\left(\frac{p_\e}{p_\p}\right)^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{m_\e}{m_\p} = 
+\Delta C\,p_\e^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{m_\e}{m_\p}\,.
+ \nonumber\\
+&&
+\end{eqnarray}
+and $p_\e = P_\e/m_\e c$, where we have normalized the electron
+momentum $P_\e$ with the electron mass $m_\p$. We use that maximal
+50\% of the energy available in a shock is injected into CR protons
+($\eta_\rmn{max,p}$) and a factor 10 smaller efficiency of 5\% for the
+CR electrons ($\eta_\rmn{max,e}$).
+
+The CR electrons cool through inverse Compton (IC) emission and
+Coulomb losses on timescales that are relative short compared to the
+dynamical timescale of a cluster. We model these looses analytically
+by assuming a self similar solution for the CR electron distribution
+function \citep{1999ApJ...520..529S}
+\begin{eqnarray}
+  \label{eq:f_inj_e}
+  f_\e(p_\e) &\approx& \frac{f_\rmn{inj,e}(\gamma_\e)}{\alpha-1}
+\left(\frac{\gamma_\low}{\gamma_\e}+\frac{\gamma_\e }{\gamma_\ma}\right)^{-1}
+\nonumber\\
+&\times& \left\{2-\left[\frac{1}{2}\left(1-\frac{\gamma_\e}{\gamma_\ma}+
+\left|1-\frac{\gamma_\e}{\gamma_\ma}\right|\right)\right]^{\alpha-1}\right.
+\nonumber\\
+&-& \left.\left(1+\frac{\gamma_\low}{\gamma_\e}\right)^{-(\alpha-1)}\right\}\,,
+\end{eqnarray}
+Here $\gamma_\e \approx p_\e = P_\e/m_\e c$ for $ p_\e \gg 1$.  The
+approximation in Eqn.~(\ref{eq:f_inj_e}) is valid as long as
+$\gamma_\ma\gg \gamma_\low$, where the upper limit is determined from
+IC losses through
+\begin{eqnarray}
+  \label{eq:gamma_max}
+b_\IC(\gamma_\e) &=& b_\IC \gamma_\e^2 
+= \frac{4}{3}\frac{\sigma_\rmn{T}}{m_\e c} U_\rmn{cmb} \gamma_\e^2 \,,\quad \rmn{and}\nonumber \\
+%1.37\times 10^{-20} \gamma^2(1+z)^4 \,\rmn{s}^{-1}
+\gamma_\ma &=& \frac{1}{b_\IC\,\Delta t}\,.
+\end{eqnarray}
+Here $\sigma_\rmn{T}= 8\pi e^4/3(m_\e c^2)^2$ is the Thomson cross
+section and $U_\rmn{cmb}$ is the energy density of the CMB in the
+cluster. The lower limit is determined from Coulomb losses through
+\begin{eqnarray}
+  \label{eq:gamma_min}
+b_\rmn{C}(\gamma_\e) &=& b_\rmn{C} \gamma_\e^2 
+= \frac{3\,\sigma_\rmn{T}\,n_\rmn{el}\,c}{2}
+\left[\ln\left(\frac{m_\e c^2 \sqrt{\gamma_\e-1}}{\hbar\,\omega_\rmn{plasma}}\right)\right.\nonumber \\
+  &-&\ln(2)\left(\frac{1}{2}+\frac{1}{\gamma_\e}\right)+\frac{1}{2}+
+\left.\left(\frac{\gamma_\e-1}{4\gamma_\e}\right)^2\right]
+         \,,\quad \rmn{and}\nonumber \\
+\gamma_\low &=& b_\rmn{C}\,\Delta t\,.
+\end{eqnarray}
+Here $\omega_\rmn{plasma} = \sqrt{4\pi e^2 n_\e / m_\e}$ is the plasma
+frequency, and $n_\e$ is the number density of free electrons.
+
+We model the final CR electron spectrum as a superposition of five CR
+populations, each determined by Eqn.~\ref{eq:f_inj_e} but with a
+different spectral index and injected spectra.
+
+
+\subsection{Synchrotron emission}
+In this section we derive the synchrotron emission from the CR
+electron distribution.  WORK UNDER PROGRESS
+
+
+\del{Collisionless cluster shocks are able to accelerate ions and electrons
+in the high-energy tail of their Maxwellian distribution functions
+through diffusive shock acceleration \citep[for reviews
+  see][]{1983RPPh...46..973D, 1987PhR...154....1B,
+  2001RPPh...64..429M}.  Neglecting non-linear shock acceleration and
+cosmic ray modified shock structure, the process of diffusive shock
+acceleration uniquely determines the spectrum of the freshly injected
+relativistic electron population in the post-shock region that cools
+and finally diminishes as a result of loss processes. \del{The inverse
+Compton emitting electron population cools on such a short time scale
+$\tau_\rmn{sync} < 10^8$~yrs (compared to the very long dynamical time
+scale $\tau_\rmn{dyn} \sim 1$~Gyr) that we can describe this by
+instantaneous cooling. In this approximation, there is no steady-state
+electron population and we would have to convert the energy from the
+electrons to inverse Compton (IC) and synchrotron radiation. Instead,
+we introduce a virtual electron population that lives in the
+SPH-broadened shock volume only; this is defined to be the volume
+where energy dissipation takes place. Within this volume, which is
+co-moving with the shock, we can use the steady-state solution for the
+distribution function of relativistic electrons and we assume no
+relativistic electrons in the post-shock volume, where no energy
+dissipation occurs. Thus, the cooled CR electron equilibrium spectrum
+can be derived from balancing the shock injection with the
+IC/synchrotron cooling: above a GeV it is given by}
+\begin{equation}
+\label{eq:f_eq}
+f_\e(E) = C_\e\, E^{-\alpha_\e}, \quad
+C_\e \propto \frac{\rho}
+{\eps_B + \eps_\rmn{ph}}
+\end{equation}
+}
+
+\begin{figure*}
+\begin{minipage}{2.0\columnwidth}
+  \includegraphics[width=0.49\columnwidth]{./figures/CRespec0.3Rv.140.v12.eps}
+  \includegraphics[width=0.49\columnwidth]{./figures/CRespec1.4Rv.140.v12.eps}
+  \caption{Cosmic ray electron spectra in cluster outskirts at
+    redshift zero. We show the CR electron distribution function
+    weighted with the electron Lorentz factor ($\gamma_\e$)
+    squared. In the {\it left panel} panel we show the CR electron in
+    the region between (0.3-0.5)$\rvir$ and in the {\it right panel}
+    between (1.3-1.5)$\rvir$. The solid lines show the median CR
+    electron spectrum where both radiative and adiabatic losses are
+    included. The dotted lines shows the 68 percentiles. The dashed
+    lines show the CR electron spectrum without Coulomb and radiative
+    cooling. Note that the Coulomb cooling at low energies is very
+    inefficient because of the low electron densities in the cluster
+    outskirts. \label{fig:e_spec}}
+\end{minipage}
+\end{figure*}
+
+high energy part build up during last Gyr, also mention normalization
+\begin{figure*}
+\begin{minipage}{2.0\columnwidth}
+  \includegraphics[width=0.49\columnwidth]{./figures/f_evolution.0.3Rv.eps}
+  \includegraphics[width=0.49\columnwidth]{./figures/f_evolution.1.4Rv.eps}
+  \caption{Time evolution of cosmic ray (CR) electron spectra. We show
+    the CR electron distribution function weighted with the electron
+    Lorentz factor ($\gamma_\e$) squared. The time evolution of the CR
+    electrons which at $z=0$ reside from (0.3-0.5)$\rvir$ are shown in
+    the {\it left panel} and (1.3-1.5)$\rvir$ in the {\it right
+      panel}. The black lines show the CR electrons with a
+    $\gamma_\e=30$, blue lines $\gamma_\e=200$, and green lines
+    $\gamma_\e=10^4$. The solid lines show the CR electrons with full
+    cooling, i.e. for Coulomb, inverse Compton, and adiabatic
+    losses. Dashed lines show the CR electrons without Coulomb and
+    inverse Compton cooling while the dash-dotted lines show the CR
+    electrons without adiabatic cooling. The dotted line show the
+    injected CR electron distribution function, derived from the
+    injected CR protons. For each energy, we normalize the CR electron
+    distribution function with the CR electrons without
+    cooling. Notice that the high energy part is built up during the
+    last Gyr. This is explained by the inverse Compton losses that are
+    larger at high energies, especially at high redshifts where the
+    energy density of the CMB is much larger than
+    today.  \label{fig:e_evol}}
+\end{minipage}
+\end{figure*}
+
+\begin{figure*}
+\begin{minipage}{2.0\columnwidth}
+  \includegraphics[width=0.49\columnwidth]{./figures/evolution.0.3Rv.eps}
+  \includegraphics[width=0.49\columnwidth]{./figures/evolution.1.4Rv.eps}
+  \caption{Time evolution of the gas density and the cosmic ray (CR)
+    cooling time. We show the time evolution of the electron number
+    density and CR electron cooling time that are associated with the
+    CR electrons which at redshift $z=0$ reside from (0.3-0.5)$\rvir$
+    in the {\it left panel} and (1.3-1.5)$\rvir$ in the {\it right
+      panel}. The red lines show the electron number densities, where
+    the dashed line show the median and dash-dotted the mean. The
+    solid lines show the cooling times
+    $\tau_\rmn{cool}=\gamma_\e/[b_\IC(\gamma_\e)+b_\rmn{C}(\gamma_\e)]$
+    for $\gamma_\e=30$ (black), $\gamma_\e=200$ (blue), and
+    $\gamma_\e=10^4$ (green). Interesting the CR cooling at low
+    energies of the particles that end up in the center is constant
+    while is increasing monotonically for the particles that end up in
+    the cluster periphery. The density of the particles that end up in
+    the center is roughly constant with time while it is decreasing
+    for the particles that end up in the outer part. This is due to
+    the expansion of the universe that counteract the contraction of
+    the particles in the cluster periphery. \label{fig:evol}}
+\end{minipage}
+\end{figure*}
+
+% --- section: --- %
+\section{Conclusions}
+\label{sect:conclusions}
+
+% --- section: --- %
+\section*{Acknowledgments}
+
+% --- section: bibliography --- %
+\bibliography{bibtex/paper}
+\bibliographystyle{mn2e}
+
+\appendix
+
+\bsp
+
+\label{lastpage}
+
+\end{document}
