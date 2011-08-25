@@ -7,8 +7,8 @@
 
 \def\del#1{{}}
 %\def\del#1{{\bf (DELETED TEXT)}}
-\def\C#1{#1}
-%\def\C#1{{\bf #1}}
+%\def\C#1{#1}
+\def\C#1{{\bf #1}}
 
 \sloppy
 
@@ -71,6 +71,7 @@
 \newcommand{\B}{\mathrm{B}}
 \newcommand{\ma}{\mathrm{max}}
 \newcommand{\low}{\mathrm{low}}
+\newcommand{\gae}{\gamma_\mathrm{e}}
 
 
 
@@ -277,8 +278,8 @@ dynamical timescale of a cluster. We model these looses analytically
 by assuming a self similar solution for the CR electron distribution
 function \citep{1999ApJ...520..529S}
 \begin{eqnarray}
-  \label{eq:f_inj_e}
-  f_\e(p_\e) &\approx& \frac{f_\rmn{inj,e}(\gamma_\e)}{\alpha-1}
+  \label{eq:f_e}
+  f_\e(\gamma_\e) &\approx& \frac{f_\rmn{inj,e}(\gamma_\e)}{\alpha-1}
 \left(\frac{\gamma_\low}{\gamma_\e}+\frac{\gamma_\e }{\gamma_\ma}\right)^{-1}
 \nonumber\\
 &\times& \left\{2-\left[\frac{1}{2}\left(1-\frac{\gamma_\e}{\gamma_\ma}+
@@ -287,7 +288,7 @@ function \citep{1999ApJ...520..529S}
 &-& \left.\left(1+\frac{\gamma_\low}{\gamma_\e}\right)^{-(\alpha-1)}\right\}\,,
 \end{eqnarray}
 Here $\gamma_\e \approx p_\e = P_\e/m_\e c$ for $ p_\e \gg 1$.  The
-approximation in Eqn.~(\ref{eq:f_inj_e}) is valid as long as
+approximation in Eqn.~(\ref{eq:f_e}) is valid as long as
 $\gamma_\ma\gg \gamma_\low$, where the upper limit is determined from
 IC losses through
 \begin{eqnarray}
@@ -314,39 +315,129 @@ Here $\omega_\rmn{plasma} = \sqrt{4\pi e^2 n_\e / m_\e}$ is the plasma
 frequency, and $n_\e$ is the number density of free electrons.
 
 We model the final CR electron spectrum as a superposition of five CR
-populations, each determined by Eqn.~\ref{eq:f_inj_e} but with a
+populations, each determined by Eqn.~\ref{eq:f_e} but with a
 different spectral index and injected spectra.
 
 
 \subsection{Synchrotron emission}
-In this section we derive the synchrotron emission from the CR
-electron distribution.  WORK UNDER PROGRESS
+WORK UNDER PROGRESS During the merging of two clusters, both
+turbulence flows and merging shocks are induced. These processes are
+thought to accelerate CRs to high energy, where especially the
+distribution function of preexisting CRs is enhanced. In this section
+we use the smooth CR electron distribution derived from a simulated
+merging cluster in the previous section, boost it using the details of
+the shock, and then finally derive the radio synchrotron emission.
+
+We fit the steady state CR electron distribution function in
+Fig.~\ref{fig:e_spec} with two power-laws
+\begin{equation}
+  f_\rmn{e,fit}(\gamma_\e) = C_1\,\gamma_\e^{-\alpha_1}
+\theta(\gamma_\rmn{break}-\gamma_\e) 
++ C_2\,\gamma_\e^{-\alpha_2}
+\theta(\gamma_\e-\gamma_\rmn{break})\,. 
+\label{eq:f_fit}
+\end{equation}
+The best fit CR electron normalization is given by ${\bf
+  C}=(6\times10^{-4},\,10^{7})$, the spectral index by ${\bf
+  \alpha}=(3.0,5.5)$, and the energy where the slope changes by
+$\gamma_\rmn{break}=1.2\times10^4$.
+
+\C{Probably need to calculate the emissivity numerically since there
+  is a break in the power-law spectrum. CHECK} We calculate the radio
+synchrotron emissivity of the CR electrons using \cite{1979rpa..book.....R}
+\begin{equation}
+J_0(\nu) \approx \left(\frac{e^2\,\nu_c}{c}\right)\,\sum_i C_i
+\Gamma\left(\frac{3 \alpha_i-1}{12}\right)\,\Gamma\left(\frac{3 \alpha_i+19}{12}\right)\frac{3^\frac{\alpha_i}{2}}{\alpha_i+1}\,\left(\frac{\nu}{\nu_c}\right)^{\frac{1-\alpha}{2}}\,,
+\end{equation}
+where the cyclotron frequency is given by
+$\nu_c=e\,B\,c/(2\pi\mecc)$. We derive the total emitted power from
+the source by integrating the emissivity over the target volume. Here,
+we assume that the target volume haw an uniform distribution of the
+CR electrons, hence the total power per unit frequency is given by
+\begin{equation}
+  P_0(\nu) = \rmn{Volume} \times J_0(\nu)\,.
+\end{equation}
+
+NEED TO REWRITE The typical size of a large relic is of the order of a
+Mpc, while the thickness is only of the order 100~kpc. We assume that
+the rather unknown extension of the relic along the line of sight to
+be about 500~kpc, where the total radio emitting volume is about
+$0.05~\rmn{Mpc}^3$. In addition we assume that the average magnetic
+field in the cluster outskirts to be of the order
+$B\approx0.1\,\mu$G. The total emitted power at 1.4 PHz of the size
+typical for a large radio Relic is then given by
+$P_0(1.4\,\rmn{PHz})=9\times10^{22}$~W/Hz. This is about a factor
+10-100 smaller than what is typically expected from a relic
+\cite{2009A&A...508...75V}. However, this luminosity is boosted by the
+shock or turbulence induced during a cluster merger. We follow the
+prescription outlined in \cite{2011ApJ...734...18K} to calculate the
+boost in radio luminosity due to reacceleration, and find that
+$P_2(1.4\,\rmn{PHz})\sim\times10^{25}$~W/Hz in agreement with several
+of the relics listed in e.g. \cite{2009A&A...508...75V}.
+
+The steady-state test-particle solution of the downstream CR
+distribution can be written as a function of the pre-existing CRs through
+\begin{equation}
+  f_2(\gae) = q \gae^{-q}\int_{\gamma_\rmn{inj}}^\gamma \gamma'^{q-1}
+   f_\rmn{e,fit}(\gamma')\dd \gamma'\,.
+\end{equation}
+Here we have neglected the contribution from the injected CRs. The lowest momentum boundary above which particles can cross the shock is given by 
+\begin{equation}
+\gamma_\rmn{inj} \approx 1.17 \frac{u_2}{c}\left(1+\frac{1.07}{\epsilon_B}\right)
+\left(\frac{M}{3}\right)^{0.1}\,.
+\end{equation}
+
+Spectral index
+\begin{equation}
+q(M) = \frac{3\left(u_1-v_ A\right)}{u_1-v_A-u_2} = 
+\frac{3\sigma\left(1-M_A^{-1}\right)}{\sigma-1-\sigma M_A^{-1}}
+\end{equation}
+where $u_1$ and $u_2$ are the speed of the flow upstream and
+downstream, respectively, in the shock rest frame. The compression
+ratio is given by $\sigma=u_1/u_2=\rho_2/\rho_1$, and $M_A=u_1/v_A$ is
+the upstream Alfvén Mach number with velocity
+$v_A=B_1/\sqrt{4\pi\rho_1}$. We derive the test-particle power-law
+slope $q$ as a function of the shock Mach number $M$ with
+$\sigma=[(\gamma_\rmn{ad}+1)M^2]/[(\gamma_\rmn{ad}-1)M^2+2]$, where
+adiabatic index $\gamma_\rmn{ad}=5/3$, $M_A=M c_s/v_A$, and $ c_s$ the
+upstream sound speed.
+
+Enhanced emissivity calculated with
+\begin{equation}
+\frac{J_2(\nu)}{J_0(\nu)} \approx \left(\frac{B_2^{\left(r-1\right)/2}}{B_0^{\left(\alpha-1\right)/2}}\right) \,\left[\frac{f_2(\gae)}{f_0(\gae)}\right]_{\gae=10^4}\,
+\left(\frac{\nu}{280\,\rmn{MHz}}\right)^{\left(\alpha-r\right)/2}\,.
+\end{equation}
 
 
-\del{Collisionless cluster shocks are able to accelerate ions and electrons
-in the high-energy tail of their Maxwellian distribution functions
-through diffusive shock acceleration \citep[for reviews
-  see][]{1983RPPh...46..973D, 1987PhR...154....1B,
-  2001RPPh...64..429M}.  Neglecting non-linear shock acceleration and
-cosmic ray modified shock structure, the process of diffusive shock
-acceleration uniquely determines the spectrum of the freshly injected
-relativistic electron population in the post-shock region that cools
-and finally diminishes as a result of loss processes. \del{The inverse
-Compton emitting electron population cools on such a short time scale
-$\tau_\rmn{sync} < 10^8$~yrs (compared to the very long dynamical time
-scale $\tau_\rmn{dyn} \sim 1$~Gyr) that we can describe this by
-instantaneous cooling. In this approximation, there is no steady-state
-electron population and we would have to convert the energy from the
-electrons to inverse Compton (IC) and synchrotron radiation. Instead,
-we introduce a virtual electron population that lives in the
-SPH-broadened shock volume only; this is defined to be the volume
-where energy dissipation takes place. Within this volume, which is
-co-moving with the shock, we can use the steady-state solution for the
-distribution function of relativistic electrons and we assume no
-relativistic electrons in the post-shock volume, where no energy
-dissipation occurs. Thus, the cooled CR electron equilibrium spectrum
-can be derived from balancing the shock injection with the
-IC/synchrotron cooling: above a GeV it is given by}
+OUTLINE THE PRESCRIPTION eq7, eq21
+
+
+\del{Collisionless cluster shocks are able to accelerate ions and
+  electrons in the high-energy tail of their Maxwellian distribution
+  functions through diffusive shock acceleration \citep[for reviews
+    see][]{1983RPPh...46..973D, 1987PhR...154....1B,
+    2001RPPh...64..429M}.  Neglecting non-linear shock acceleration
+  and cosmic ray modified shock structure, the process of diffusive
+  shock acceleration uniquely determines the spectrum of the freshly
+  injected relativistic electron population in the post-shock region
+  that cools and finally diminishes as a result of loss
+  processes. \del{The inverse Compton emitting electron population
+    cools on such a short time scale $\tau_\rmn{sync} < 10^8$~yrs
+    (compared to the very long dynamical time scale $\tau_\rmn{dyn}
+    \sim 1$~Gyr) that we can describe this by instantaneous
+    cooling. In this approximation, there is no steady-state electron
+    population and we would have to convert the energy from the
+    electrons to inverse Compton (IC) and synchrotron
+    radiation. Instead, we introduce a virtual electron population
+    that lives in the SPH-broadened shock volume only; this is defined
+    to be the volume where energy dissipation takes place. Within this
+    volume, which is co-moving with the shock, we can use the
+    steady-state solution for the distribution function of
+    relativistic electrons and we assume no relativistic electrons in
+    the post-shock volume, where no energy dissipation occurs. Thus,
+    the cooled CR electron equilibrium spectrum can be derived from
+    balancing the shock injection with the IC/synchrotron cooling:
+    above a GeV it is given by}
 \begin{equation}
 \label{eq:f_eq}
 f_\e(E) = C_\e\, E^{-\alpha_\e}, \quad
@@ -374,7 +465,6 @@ C_\e \propto \frac{\rho}
 \end{minipage}
 \end{figure*}
 
-high energy part build up during last Gyr, also mention normalization
 \begin{figure*}
 \begin{minipage}{2.0\columnwidth}
   \includegraphics[width=0.49\columnwidth]{./figures/f_evolution.0.3Rv.eps}
