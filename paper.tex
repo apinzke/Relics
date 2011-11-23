@@ -51,7 +51,10 @@
 \newcommand{\mpc}{m_{\mathrm{p}}c}
 \newcommand{\mpcc}{m_{\mathrm{p}}c^2}
 \newcommand{\p}{\mathrm{p}}
-\newcommand{\pp}{\mathrm{pp}}
+\newcommand{\Pp}{\mathrm{P}_\mathrm{p}}
+\newcommand{\Pe}{\mathrm{P}_\mathrm{e}}
+\newcommand{\pp}{p_\mathrm{p}}
+\newcommand{\pe}{p_\mathrm{e}}
 \newcommand{\br}{\bold{r}}
 \newcommand{\e}{\mathrm{e}}
 \newcommand{\ii}{\mathrm{i}}
@@ -72,6 +75,9 @@
 \newcommand{\ma}{\mathrm{max}}
 \newcommand{\low}{\mathrm{low}}
 \newcommand{\gae}{\gamma_\mathrm{e}}
+\newcommand{\gam}{\gamma}
+
+
 
 
 
@@ -254,100 +260,179 @@ factor $\sim 2000$ difference in mass. In addition we model the
 Coulomb and radiative losses of the CR electrons.
 
 \subsection{CR electron distribution function} 
+In a hot plasma the temperatures of electrons and protons (ions) are
+equal. Under this constraint we derive the relationship between CR
+electon momentum and CR proton momentum given by
+%\begin{eqnarray}
+%  \label{eq:pe_pp}
+%\dd \Pe = \dd \Pp \frac{\sqrt{\Pe^2+2\left(m_\e c\right)^2-2m_\e m_\p\,c^2
+%+2\left(m_\p-m_\e\right)c\sqrt{\left(m_\e c\right)^2+\Pe^2}}}{\Pe+\left(m_\p-m_\e\right) c \frac{\Pe}{\sqrt{\left(m_\e c\right)^2+\Pe^2}}}
+%\end{eqnarray}
+\begin{eqnarray}
+  \label{eq:pe_pp}
+\dd \pe &=& \dd \pp \,g(\pe) =  \dd \pp \,h(\pp)\,,\qquad \rmn{where}\\
+g(\pe) &=& X \,\frac{\left[\pe^2-2\left(X-1\right)\left(1-\sqrt{1+\pe^2}\right)\right]^{0.5}}{\displaystyle\pe+\left(X-1\right)\frac{\pe}{\sqrt{1+\pe^2}}}\,,\qquad \rmn{and}\\
+h(\pp) &=& X \,\frac{\displaystyle\pp-\left(1-Y\right)\frac{\pp}{\sqrt{1+\pp^2}}}{\left[\pp^2+2\left(1-Y\right)\left(1-\sqrt{1+\pp^2}\right)\right]^{0.5}}\,.\\
+\end{eqnarray}
+Note that $\pe = \Pe/m_\e c$ and $\pp = \Pp/m_\p c$, where we have
+normalized the electron momentum $\Pe$ and the proton momentum $\Pp$
+with the electron mass $m_\e$ and proton mass $m_\p$, respectively. We
+have introduced the mass ratios $X=m_\p/m_\e$ and $Y=m_\e/m_\p$. Also
+note that $\dd \Pe\rightarrow \dd \Pp$ in the asymptotic limit where
+$\pp\gg 1$, and that $\dd \Pe\rightarrow \sqrt{m_\e / m_\p}\,\dd \Pp$ for
+$\pp\ll 1$. 
+
 The injected CR electron distribution function at each time $t$ is
 given by
 \begin{eqnarray}
   \label{eq:f_inj_e}
   f_\rmn{inj,e}(p_\e) &=&  \frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd p_\e}(p_\e) = 
-\frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd p_\p}(p_\e)\frac{m_\e}{m_\p} \nonumber\\
+\frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd p_\p}(p_\e)\frac{1}{g(p_\e)} \nonumber\\
 &=& \frac{\dd^2 N_\rmn{inj,p}}{\dd V \dd p_\p}(p_\p)
-\left(\frac{p_\e}{p_\p}\right)^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{m_\e}{m_\p} = 
-\Delta C\,p_\e^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{m_\e}{m_\p}\,.
+\left(\frac{p_\e}{p_\p}\right)^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{1}{g(p_\e)} = 
+\Delta C\,p_\e^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{1}{g(p_\e)}\,.
  \nonumber\\
 &&
 \end{eqnarray}
-and $p_\e = P_\e/m_\e c$, where we have normalized the electron
-momentum $P_\e$ with the electron mass $m_\p$. We use that maximal
-50\% of the energy available in a shock is injected into CR protons
-($\eta_\rmn{max,p}$) and a factor 10 smaller efficiency of 5\% for the
-CR electrons ($\eta_\rmn{max,e}$).
+We use that maximal 50\% of the energy available in a shock is
+injected into CR protons ($\eta_\rmn{max,p}$) and a factor 10 smaller
+efficiency of 5\% for the CR electrons ($\eta_\rmn{max,e}$).
 
 The CR electrons cool through inverse Compton (IC) emission and
 Coulomb losses on timescales that are relative short compared to the
 dynamical timescale of a cluster. We model these looses analytically
-by assuming a self similar solution for the CR electron distribution
-function \citep{1999ApJ...520..529S}
+by instantiniuosly injecting a power-law of electrons at time $t_i$
+and evolving it to a later time $t$ (for further details see
+\citep{1999ApJ...520..529S}). The loss of energy for each particle is
+described by
+\begin{equation}
+\label{eq:d_cool}
+\frac{\dd \gam}{\dd t} = - b(\gam,t)\,,
+\end{equation}
+where the loss function $b(\gam,t)$ is dominated by Coulomb and IC
+losses for the energies and gas densities relevant in this work. The
+Coulomb losses are given by
 \begin{eqnarray}
-  \label{eq:f_e}
-  f_\e(\gamma_\e) &\approx& \frac{f_\rmn{inj,e}(\gamma_\e)}{\alpha-1}
-\left(\frac{\gamma_\low}{\gamma_\e}+\frac{\gamma_\e }{\gamma_\ma}\right)^{-1}
-\nonumber\\
-&\times& \left\{2-\left[\frac{1}{2}\left(1-\frac{\gamma_\e}{\gamma_\ma}+
-\left|1-\frac{\gamma_\e}{\gamma_\ma}\right|\right)\right]^{\alpha-1}\right.
-\nonumber\\
-&-& \left.\left(1+\frac{\gamma_\low}{\gamma_\e}\right)^{-(\alpha-1)}\right\}\,,
-\end{eqnarray}
-Here $\gamma_\e \approx p_\e = P_\e/m_\e c$ for $ p_\e \gg 1$.  The
-approximation in Eqn.~(\ref{eq:f_e}) is valid as long as
-$\gamma_\ma\gg \gamma_\low$, where the upper limit is determined from
-IC losses through
-\begin{eqnarray}
-  \label{eq:gamma_max}
-b_\IC(\gamma_\e) &=& b_\IC \gamma_\e^2 
-= \frac{4}{3}\frac{\sigma_\rmn{T}}{m_\e c} U_\rmn{cmb} \gamma_\e^2 \,,\quad \rmn{and}\nonumber \\
-%1.37\times 10^{-20} \gamma^2(1+z)^4 \,\rmn{s}^{-1}
-\gamma_\ma &=& \frac{1}{b_\IC\,\Delta t}\,.
-\end{eqnarray}
-Here $\sigma_\rmn{T}= 8\pi e^4/3(m_\e c^2)^2$ is the Thomson cross
-section and $U_\rmn{cmb}$ is the energy density of the CMB in the
-cluster. The lower limit is determined from Coulomb losses through
-\begin{eqnarray}
-  \label{eq:gamma_min}
-b_\rmn{C}(\gamma_\e) &=& b_\rmn{C} \gamma_\e^2 
-= \frac{3\,\sigma_\rmn{T}\,n_\rmn{el}\,c}{2}
-\left[\ln\left(\frac{m_\e c^2 \sqrt{\gamma_\e-1}}{\hbar\,\omega_\rmn{plasma}}\right)\right.\nonumber \\
-  &-&\ln(2)\left(\frac{1}{2}+\frac{1}{\gamma_\e}\right)+\frac{1}{2}+
-\left.\left(\frac{\gamma_\e-1}{4\gamma_\e}\right)^2\right]
-         \,,\quad \rmn{and}\nonumber \\
-\gamma_\low &=& b_\rmn{C}\,\Delta t\,.
+  \label{eq:b_C}
+  b_\rmn{C}(\gam) &=& b_\rmn{C} \gam^2 
+  = \frac{3\,\sigma_\rmn{T}\,n_\rmn{el}\,c}{2}
+  \left[\ln\left(\frac{m_\e c^2 \sqrt{\gam-1}}{\hbar\,\omega_\rmn{plasma}}\right)\right.\nonumber \\
+    &-&\ln(2)\left(\frac{1}{2}+\frac{1}{\gam}\right)+\frac{1}{2}+
+    \left.\left(\frac{\gam-1}{4\gam}\right)^2\right]\,.
 \end{eqnarray}
 Here $\omega_\rmn{plasma} = \sqrt{4\pi e^2 n_\e / m_\e}$ is the plasma
-frequency, and $n_\e$ is the number density of free electrons.
+frequency, and $n_\e$ is the number density of free electrons. Since
+the Coulomb losses for relativistic electrons is almost independent of
+energy (logarithmic), we approximate that $b_\rmn{C}(\gam,t)\approx
+b_\rmn{C}(t)$ \footnote{We use a constant energy $\gamma=10^2$ to
+  model the very weak dependence of energy, and note that the
+  particular value of $\gamma$ does not matter as long as
+  $\gamma\gg1$.}. We can now derive the shift in energy $\gam_i$ at
+time $t_i$ to energy $\gam$ at time $t$ due to Coulomb cooling by
+integrating Eqn.~(\ref{eq:d_cool}):
+\begin{eqnarray}
+  \label{eq:gamma_low}
+  \gam_\low \equiv\int_{t_i}^{t}\dd t b_\rmn{C}(t) = 
+  -\int_{\gam_i}^{\gam}\dd \gam' = -(\gam-\gam_i)\,.
+\end{eqnarray}
+Since we have discrete snapshots in time we can approximate 
+\begin{eqnarray}
+  \label{eq:gamma_low_sum}
+  \gam_\low = \Delta t \sum_j b_\rmn{C}(t_j)\,,
+\end{eqnarray}
+where the sum includes all snapshots from time $t_i$ to time $t$. We
+now continue with the IC losses that are given by
+\begin{equation}
+  \label{eq:b_IC}
+  b_\IC(\gam,z) = b_\IC \gam^2 (1+z)^4
+  = \frac{4}{3}\frac{\sigma_\rmn{T}}{m_\e c} U_\rmn{cmb} \gam^2\,.
+\end{equation}
+Here $\sigma_\rmn{T}= 8\pi e^4/3(m_\e c^2)^2$ is the Thomson cross
+section and $U_\rmn{cmb}$ is the energy density of the CMB at redshift
+$z=0$. Similarly to the Coulomb cooling we derive the evolution of energy 
+of a particle subject to IC losses through
+\begin{equation}
+  \label{eq:b_IC_evolu}
+\frac{\dd \gam}{\gam^2} = -b_\IC (1+z)^4\dd t\,.
+\end{equation}
+After a time $(t-t_i)$ has elapsed, all the electrons with
+energies above $\gam_\ma$ have thermalized, where we derive $\gam_\ma$
+through integrating Eqn.~(\ref{eq:b_IC_evolu}) from injected time
+$z_i=z(t_i)$ to a later time $z=z(t)$:
+\begin{equation}
+  \label{eq:b_max}
+   \frac{1}{\gam_\ma} \equiv \frac{1}{\gam} - \frac{1}{\gam_i} = 
+   \frac{b_\IC}{H_0}\left[\Lambda(z)-\Lambda(z_i)\right]\,.
+\end{equation}
+Here $\Lambda(z) \approx z + 1.23\,z^2 + 0.50\,z^3 - 0.14\,z^4 -
+0.04\,z^5$ in a Lambda CDM universe and
+$H_0=h\,\rmn{km}\,\rmn{s}^{-1}\,\rmn{Mpc}^{-1}$ is the Hubble constant.
+
+Given an initial energy $\gam_i$ of an electron at time $t_i$,
+Eqn.~(\ref{eq:d_cool}) can be integrated to give the value of $\gam$
+at a later time $t$. The differential population density for
+relativistic electrons ($\gam_\e \approx p_\e = P_\e/m_\e c$) is then
+given by
+\begin{eqnarray}
+\label{eq:f_evolv}
+f_\rmn{inj,e}(\gam,t,t_i) &=& f_\rmn{inj,e}(\gam_i,t_i)
+\left.\frac{\partial\gam_i}{\partial\gam}\right|_t\,,\quad \rmn{where} \\
+ f_\rmn{inj,e}(\gam_i,t_i) &=& 
+f_\rmn{inj,e}(\gam-\Delta\gam_\IC-\Delta\gam_\rmn{C},t_i) \nonumber\\
+&=& f_\rmn{inj,e}(\gam+\frac{\gam^2}{\gam_\ma-\gam}+\gam_\low,t_i)\,,\quad \rmn{and} \\
+\frac{\partial\gam_i}{\partial\gam} &=& 
+\frac{\gam_\ma^2}{\left(\gam_\ma-\gam\right)^2}\,.
+\end{eqnarray}
+Here we have used that $\Delta\gam_\IC=-\gam_\low$ and
+$\Delta\gam_\rmn{C}=\frac{-\gam^2}{\gam_\ma-\gam}$. The total electron
+spectrum is derived from the sum of all individually cooled injected
+spectra, starting from the time of injection $t_i$ until a later time
+$t$,
+\begin{eqnarray}
+\label{eq:f_sum}
+f_\rmn{tot,e}(\gam,t) = \left(\frac{\tilde{\rho}_{gas}(t)}{\rho_0}\right)^{-1/3}\sum_j f_\rmn{inj,e}(\gam,t,t_j)\,.
+\end{eqnarray}
+Here the comoving gas density factor $\rho_{gas}(t)$ takes care of the
+adiabatic gains and losses, where $\rho_0=1$ is a reference density in
+GADGET. Also note that the electrons injected at time $t=t_i$ have not
+had the time to cool yet. 
 
 We model the final CR electron spectrum as a superposition of five CR
-populations, each determined by Eqn.~\ref{eq:f_e} but with a
-different spectral index and injected spectra.
+populations, each determined by Eqn.~\ref{eq:f_sum} but with a
+different spectral index and injected spectra. 
 
 
 \subsection{Synchrotron emission}
-WORK UNDER PROGRESS During the merging of two clusters, both
-turbulence flows and merging shocks are induced. These processes are
-thought to accelerate CRs to high energy, where especially the
-distribution function of preexisting CRs is enhanced. In this section
-we use the smooth CR electron distribution derived from a simulated
-merging cluster in the previous section, boost it using the details of
-the shock, and then finally derive the radio synchrotron emission.
+The process of merging clusters is often very violent where large
+amounts of gravitational energy beeing dissipated in the form of
+radiation, increased temperature, turbulence flows and shocks. The two
+latter procesess are belived to accelerate CRs to high energy, where
+especially the distribution function of preexisting CRs is
+enhanced. In this section we use the smooth CR electron distribution
+derived from a simulated merging cluster in the previous section,
+boost it using the details of the shock, and then finally derive the
+radio synchrotron emission.
 
 We fit the steady state CR electron distribution function in
 Fig.~\ref{fig:e_spec} with two power-laws
 \begin{equation}
-  f_\rmn{e,fit}(\gamma_\e) = C_1\,\gamma_\e^{-\alpha_1}
-\theta(\gamma_\rmn{break}-\gamma_\e) 
-+ C_2\,\gamma_\e^{-\alpha_2}
-\theta(\gamma_\e-\gamma_\rmn{break})\,. 
+  f_\rmn{e,fit}(\gam_\e) = C_1\,\gam_\e^{-\alpha_1}
+\theta(\gam_\rmn{break}-\gam_\e) 
++ C_2\,\gam_\e^{-\alpha_2}
+\theta(\gam_\e-\gam_\rmn{break})\,. 
 \label{eq:f_fit}
 \end{equation}
 The best fit CR electron normalization is given by ${\bf
   C}=(6\times10^{-4},\,10^{7})$, the spectral index by ${\bf
   \alpha}=(3.0,5.5)$, and the energy where the slope changes by
-$\gamma_\rmn{break}=1.2\times10^4$.
+$\gam_\rmn{break}=1.2\times10^4$.
 
 \C{Probably need to calculate the emissivity numerically since there
   is a break in the power-law spectrum. CHECK} We calculate the radio
 synchrotron emissivity of the CR electrons using \cite{1979rpa..book.....R}
 \begin{equation}
 J_0(\nu) \approx \left(\frac{e^2\,\nu_c}{c}\right)\,\sum_i C_i
-\Gamma\left(\frac{3 \alpha_i-1}{12}\right)\,\Gamma\left(\frac{3 \alpha_i+19}{12}\right)\frac{3^\frac{\alpha_i}{2}}{\alpha_i+1}\,\left(\frac{\nu}{\nu_c}\right)^{\frac{1-\alpha}{2}}\,,
+\gam\left(\frac{3 \alpha_i-1}{12}\right)\,\gam\left(\frac{3 \alpha_i+19}{12}\right)\frac{3^\frac{\alpha_i}{2}}{\alpha_i+1}\,\left(\frac{\nu}{\nu_c}\right)^{\frac{1-\alpha}{2}}\,,
 \end{equation}
 where the cyclotron frequency is given by
 $\nu_c=e\,B\,c/(2\pi\mecc)$. We derive the total emitted power from
@@ -378,12 +463,12 @@ of the relics listed in e.g. \cite{2009A&A...508...75V}.
 The steady-state test-particle solution of the downstream CR
 distribution can be written as a function of the pre-existing CRs through
 \begin{equation}
-  f_2(\gae) = q \gae^{-q}\int_{\gamma_\rmn{inj}}^\gamma \gamma'^{q-1}
-   f_\rmn{e,fit}(\gamma')\dd \gamma'\,.
+  f_2(\gae) = q \gae^{-q}\int_{\gam_\rmn{inj}}^\gam \gam'^{q-1}
+   f_\rmn{e,fit}(\gam')\dd \gam'\,.
 \end{equation}
 Here we have neglected the contribution from the injected CRs. The lowest momentum boundary above which particles can cross the shock is given by 
 \begin{equation}
-\gamma_\rmn{inj} \approx 1.17 \frac{u_2}{c}\left(1+\frac{1.07}{\epsilon_B}\right)
+\gam_\rmn{inj} \approx 1.17 \frac{u_2}{c}\left(1+\frac{1.07}{\epsilon_B}\right)
 \left(\frac{M}{3}\right)^{0.1}\,.
 \end{equation}
 
@@ -398,8 +483,8 @@ ratio is given by $\sigma=u_1/u_2=\rho_2/\rho_1$, and $M_A=u_1/v_A$ is
 the upstream Alfvén Mach number with velocity
 $v_A=B_1/\sqrt{4\pi\rho_1}$. We derive the test-particle power-law
 slope $q$ as a function of the shock Mach number $M$ with
-$\sigma=[(\gamma_\rmn{ad}+1)M^2]/[(\gamma_\rmn{ad}-1)M^2+2]$, where
-adiabatic index $\gamma_\rmn{ad}=5/3$, $M_A=M c_s/v_A$, and $ c_s$ the
+$\sigma=[(\gam_\rmn{ad}+1)M^2]/[(\gam_\rmn{ad}-1)M^2+2]$, where
+adiabatic index $\gam_\rmn{ad}=5/3$, $M_A=M c_s/v_A$, and $ c_s$ the
 upstream sound speed.
 
 Enhanced emissivity calculated with
@@ -448,11 +533,11 @@ C_\e \propto \frac{\rho}
 
 \begin{figure*}
 \begin{minipage}{2.0\columnwidth}
-  \includegraphics[width=0.49\columnwidth]{./figures/CRespec0.3Rv.140.v12.eps}
-  \includegraphics[width=0.49\columnwidth]{./figures/CRespec1.4Rv.140.v12.eps}
+%  \includegraphics[width=0.49\columnwidth]{./figures/CRespec0.3Rv.140.v12.eps}
+%  \includegraphics[width=0.49\columnwidth]{./figures/CRespec1.4Rv.140.v12.eps}
   \caption{Cosmic ray electron spectra in cluster outskirts at
     redshift zero. We show the CR electron distribution function
-    weighted with the electron Lorentz factor ($\gamma_\e$)
+    weighted with the electron Lorentz factor ($\gam_\e$)
     squared. In the {\it left panel} panel we show the CR electron in
     the region between (0.3-0.5)$\rvir$ and in the {\it right panel}
     between (1.3-1.5)$\rvir$. The solid lines show the median CR
@@ -467,16 +552,16 @@ C_\e \propto \frac{\rho}
 
 \begin{figure*}
 \begin{minipage}{2.0\columnwidth}
-  \includegraphics[width=0.49\columnwidth]{./figures/f_evolution.0.3Rv.eps}
-  \includegraphics[width=0.49\columnwidth]{./figures/f_evolution.1.4Rv.eps}
+%  \includegraphics[width=0.49\columnwidth]{./figures/f_evolution.0.3Rv.eps}
+%  \includegraphics[width=0.49\columnwidth]{./figures/f_evolution.1.4Rv.eps}
   \caption{Time evolution of cosmic ray (CR) electron spectra. We show
     the CR electron distribution function weighted with the electron
-    Lorentz factor ($\gamma_\e$) squared. The time evolution of the CR
+    Lorentz factor ($\gam_\e$) squared. The time evolution of the CR
     electrons which at $z=0$ reside from (0.3-0.5)$\rvir$ are shown in
     the {\it left panel} and (1.3-1.5)$\rvir$ in the {\it right
       panel}. The black lines show the CR electrons with a
-    $\gamma_\e=30$, blue lines $\gamma_\e=200$, and green lines
-    $\gamma_\e=10^4$. The solid lines show the CR electrons with full
+    $\gam_\e=30$, blue lines $\gam_\e=200$, and green lines
+    $\gam_\e=10^4$. The solid lines show the CR electrons with full
     cooling, i.e. for Coulomb, inverse Compton, and adiabatic
     losses. Dashed lines show the CR electrons without Coulomb and
     inverse Compton cooling while the dash-dotted lines show the CR
@@ -492,10 +577,11 @@ C_\e \propto \frac{\rho}
 \end{minipage}
 \end{figure*}
 
+
 \begin{figure*}
 \begin{minipage}{2.0\columnwidth}
-  \includegraphics[width=0.49\columnwidth]{./figures/evolution.0.3Rv.eps}
-  \includegraphics[width=0.49\columnwidth]{./figures/evolution.1.4Rv.eps}
+%  \includegraphics[width=0.49\columnwidth]{./figures/evolution.0.3Rv.eps}
+%  \includegraphics[width=0.49\columnwidth]{./figures/evolution.1.4Rv.eps}
   \caption{Time evolution of the gas density and the cosmic ray (CR)
     cooling time. We show the time evolution of the electron number
     density and CR electron cooling time that are associated with the
@@ -504,9 +590,9 @@ C_\e \propto \frac{\rho}
       panel}. The red lines show the electron number densities, where
     the dashed line show the median and dash-dotted the mean. The
     solid lines show the cooling times
-    $\tau_\rmn{cool}=\gamma_\e/[b_\IC(\gamma_\e)+b_\rmn{C}(\gamma_\e)]$
-    for $\gamma_\e=30$ (black), $\gamma_\e=200$ (blue), and
-    $\gamma_\e=10^4$ (green). Interesting the CR cooling at low
+    $\tau_\rmn{cool}=\gam_\e/[b_\IC(\gam_\e)+b_\rmn{C}(\gam_\e)]$
+    for $\gam_\e=30$ (black), $\gam_\e=200$ (blue), and
+    $\gam_\e=10^4$ (green). Interesting the CR cooling at low
     energies of the particles that end up in the center is constant
     while is increasing monotonically for the particles that end up in
     the cluster periphery. The density of the particles that end up in

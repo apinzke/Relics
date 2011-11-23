@@ -1,7 +1,7 @@
 # Makefile to produce the article.
 LATEX  =  TEXINPUTS=.//: BSTINPUTS=.//: latex
 DVIPS  =  dvips
-FIGURES = figures/CRespec140.v12.eps
+FIGURES = 
 
 .PRECIOUS: $(FIGURES)
 
