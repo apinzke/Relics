@@ -5,11 +5,11 @@ ID before you continue to 2), you could always try ;-)
 
 2) Get an initial local copy of the repository (i.e., paper source files)
 
-   git clone git@github.com:apinzke/ClusGray.git
+   git clone git@github.com:apinzke/Relics.git
 
 3) Set the remote git access:
 
-   git remote add origin git@github.com:apinzke/ClusGray.git
+   git remote add origin git@github.com:apinzke/Relics.git
 
 4) In the future, decend into the local copy of repository and "pull"
     new versions of the repository files to update them:
