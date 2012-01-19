@@ -262,7 +262,7 @@ Coulomb and radiative losses of the CR electrons.
 \subsection{CR electron distribution function} 
 In a hot plasma the temperatures of electrons and protons (ions) are
 equal. Under this constraint we derive the relationship between CR
-electon momentum and CR proton momentum given by
+electron momentum and CR proton momentum given by
 %\begin{eqnarray}
 %  \label{eq:pe_pp}
 %\dd \Pe = \dd \Pp \frac{\sqrt{\Pe^2+2\left(m_\e c\right)^2-2m_\e m_\p\,c^2
@@ -404,9 +404,9 @@ different spectral index and injected spectra.
 
 \subsection{Synchrotron emission}
 The process of merging clusters is often very violent where large
-amounts of gravitational energy beeing dissipated in the form of
+amounts of gravitational energy being dissipated in the form of
 radiation, increased temperature, turbulence flows and shocks. The two
-latter procesess are belived to accelerate CRs to high energy, where
+latter processes are believed to accelerate CRs to high energy, where
 especially the distribution function of preexisting CRs is
 enhanced. In this section we use the smooth CR electron distribution
 derived from a simulated merging cluster in the previous section,
@@ -536,7 +536,19 @@ C_\e \propto \frac{\rho}
   \includegraphics[width=0.32\columnwidth]{./figures/f_z.g72a.1.4Rv.a24.full.v20.eps}
   \includegraphics[width=0.32\columnwidth]{./figures/f_z.g1a.1.4Rv.a24.full.v20.eps}
   \includegraphics[width=0.32\columnwidth]{./figures/f_z.g676.1.4Rv.a24.full.v20.eps}
-  \caption{NEEDS TO BE WRITTEN, WED}
+  \caption{Time evolution of the cosmic ray electron spectra in
+    cluster outskirts. We show the total volume weighted CR electron
+    distribution function for the particles that reside end up in
+    region between (1.3-1.5)$\rvir$ at redshift zero; a cluster with a
+    recent merger (g72a, left panel), large cooling flow cluster (g1a,
+    middle panel), and a small cooling flow cluster (g676, right
+    panel). The different line colors show the CR electron spectra at
+    different look-back times, where the most recent spectrum in black
+    is at 13.6 Gyrs. Notice the larger scatter in the merging cluster,
+    and the relative small difference in the cooling flow
+    clusters. The shape of the distribution function is very similar
+    between different cooling flow clusters, and slightly more
+    stochastic for merging clusters.\label{fig:e_spec_z}}
 \end{minipage}
 \end{figure*}
 
@@ -544,7 +556,25 @@ C_\e \propto \frac{\rho}
 \begin{minipage}{2.0\columnwidth}
   \includegraphics[width=0.49\columnwidth]{./figures/CRspec.alphaCheck.eps}
   \includegraphics[width=0.49\columnwidth]{./figures/CRspec.snapCheck.eps}
-  \caption{NEEDS TO BE WRITTEN, WED}
+  \caption{Testing the robustness of the CR electron spectra. Left
+    panel shows how different cuts in injected spectra impact the
+    total volume weighted CR electron spectrum with full cooling; no
+    spectral cut (red line), cut particles with $\alpha_\inj>2.2$
+    (yellow line), cut particles with $\alpha_\inj>2.4$ (green line),
+    cut particles with $\alpha_\inj>2.6$ (blue line). Note that in the
+    main CR model we cut all particles with an $\alpha_\inj>2.4$,
+    which is a factor four smaller at low energies than the spectrum
+    without a cut. Right panel shows the effect of time-resolution on
+    the CR electron spectra. The median CR spectrum is shown with full
+    cooling that includes radiative, Coulomb, and adiabatic losses
+    (dash-dotted line), the solid line represents the total volume
+    weighted CR electron spectrum with full cooling. The three line
+    colors corresponds to the same cluster, a large coma like merging
+    cluster, but with different time resolution between snapshots in
+    the relevant regime; red lines corresponds to 100 Myrs between
+    snapshots, orange lines corresponds to ~(1.0-1.5) Gyrs between
+    snapshots, and the blue lines corresponds to ~(1.0-1.5) Gyrs
+    between snapshots. \label{fig:e_spec_tests}}
 \end{minipage}
 \end{figure*}
 
@@ -552,33 +582,54 @@ C_\e \propto \frac{\rho}
 \begin{minipage}{2.0\columnwidth}
   \includegraphics[width=0.49\columnwidth]{./figures/CRvolume.g72a.1.4Rv.a24.full.140.v20.eps}
   \includegraphics[width=0.49\columnwidth]{./figures/CRvolume.g1a.1.4Rv.a24.full.020.v20.eps}
-  \caption{NEEDS TO BE WRITTEN, WED}
+  \caption{The fractional volume occupied by CR electrons in cluster
+    outskirts. Large panels (left Coma like cluster, and right massive
+    cooling flow cluster) show the fractional volume occupied by CR
+    electrons as a function of logarithmic Lorentz factor ($\gam_\e$)
+    in the region between (1.3-1.5)$\rvir$ at redshift zero. The
+    smaller panels show the logarithmic particle distribution function
+    for different $\gam_\e$, where the left peaks corresponds to
+    unpopulated SPH particles and cooled CR particles, while the right
+    peaks show the CR populated SPH
+    particles. \label{fig:e_spec_CRvolume}}
 \end{minipage}
 \end{figure*}
 
 \begin{figure}
   \includegraphics[width=1.0\columnwidth]{./figures/CRespec.all.1.4Rv.a24.full.020.v20.eps}
-  \caption{NEEDS TO BE WRITTEN, WED}
+  \caption{Cosmic ray electron spectra in cluster outskirts at
+    redshift zero. We show the total volume weighted CR electron
+    distribution function in the region between (1.3-1.5)$\rvir$ with
+    full cooling that includes radiative, Coulomb, and adiabatic
+    losses. The the thin grey lines show the spectra from individual
+    clusters while the thick solid line shows the median of the
+    spectra from all clusters. \label{fig:e_spec_all}}
 \end{figure}
 
 \begin{figure}
   \includegraphics[width=1.0\columnwidth]{./figures/old/CRespecRadial.Radial2Rv.a24.140.v16.eps}
-  \caption{replace figure with media all clusters, NEEDS TO BE WRITTEN, WED}
+  \caption{Spatial dependence of the cosmic ray electron spectra at
+    redshift zero. We show the total volume weighted CR electron
+    distribution function; a Coma like cluster (left panel), a massive
+    cooling flow cluster (middle panel), and the median of our 14
+    cluster's spectra (right panel). The different line colors show
+    the CR electron spectra for different radial
+    bins.\label{fig:e_spec_spatial}}
 \end{figure}
 
 \begin{figure}
   \includegraphics[width=1.0\columnwidth]{./figures/CRespec.g72a.1.4Rv.a24.full.140.v20.eps}
-  \caption{NEEDS TO BE WRITTEN, WED\del{Cosmic ray electron spectra in
-      cluster outskirts at redshift zero. We show the CR electron
-      distribution function weighted with the electron Lorentz factor
-      ($\gam_\e$) squared for a cluster with a recent merger for
-      region between (1.3-1.5)$\rvir$. The solid lines show the median
-      CR electron spectrum where both radiative and adiabatic losses
-      are included. The dotted lines shows the 68 percentiles. The
-      dashed lines show the CR electron spectrum without Coulomb and
-      radiative cooling. Note that the Coulomb cooling at low energies
-      is very inefficient because of the low electron densities in the
-      cluster outskirts.}\label{fig:e_spec}}
+  \caption{Cosmic ray electron spectra in cluster outskirts at
+    redshift zero. We show the CR electron distribution function
+    weighted with the electron Lorentz factor ($\gam_\e$) squared for
+    a typical cluster with a recent merger for region between
+    (1.3-1.5)$\rvir$. The median CR spectrum is shown with full
+    cooling that includes radiative, Coulomb, and adiabatic losses
+    (dash-dotted line), and with only adiabatic losses (dashed
+    line). The solid line represents the total volume weighted CR
+    electron spectrum with full cooling. Note that the Coulomb cooling
+    at low energies is very inefficient because of the low electron
+    densities in the cluster outskirts.\label{fig:e_spec_g72a}}
 \end{figure}
 
 \del{
