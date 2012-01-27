@@ -76,6 +76,7 @@
 \newcommand{\low}{\mathrm{low}}
 \newcommand{\gae}{\gamma_\mathrm{e}}
 \newcommand{\gam}{\gamma}
+\newcommand{\tend}{t_\rmn{end}}
 
 
 
@@ -160,25 +161,25 @@ and Pfrommer, in prep. for a discussion of this topic).
 \begin{tabular}{l l l l r r r}
 \hline
 \hline
-Cluster & sim.'s & dyn. state$^{(1)}$ & $M_{\rm vir}^{(2)}$ & $\rvir^{(2)}$ & $kT_{\rm vir}^{(3)}$ & $\Delta t$$^{(1=4)}$\\
+Cluster & sim.'s & state$^{(1)}$ & $M_{\rm vir}^{(2)}$ & $\rvir^{(2)}$ & $kT_{\rm vir}^{(3)}$ & $\Delta t$$^{(4)}$\\
 & & & [$\rmn{M}_\odot$] & [Mpc] & [keV] & \\
 \hline
-1  & g8a  & CC    & $2.6\times 10^{15}$ &   2.9~~ & 13.1 \\
-2  & g1a  & CC    & $1.9\times 10^{15}$ &   2.5~~ & 10.6 \\
-3  & g72a & PostM & $1.6\times 10^{15}$ &   2.4~~ & 9.4  \\
-4  & g51  & CC    & $1.5\times 10^{15}$ &   2.4~~ & 9.4  \\
+1  & g8a  & CC    & $2.6\times 10^{15}$ &   2.9~~ & 13.1 & 1.127 \\
+2  & g1a  & CC    & $1.9\times 10^{15}$ &   2.5~~ & 10.6 & 1.127 \\
+3  & g72a & PostM & $1.6\times 10^{15}$ &   2.4~~ & 9.4  & 100 Myr \\
+4  & g51  & CC    & $1.5\times 10^{15}$ &   2.4~~ & 9.4  & 1.127 \\
                                                      
-5  & g1b  & M     & $5.2\times 10^{14}$ &   1.7~~ & 4.7  \\
-6  & g72b & M     & $2.2\times 10^{14}$ &   1.2~~ & 2.4  \\
-7  & g1c  & M     & $2.0\times 10^{14}$ &   1.2~~ & 2.3  \\
-8  & g8b  & M     & $1.5\times 10^{14}$ &   1.1~~ & 1.9  \\
-9  & g1d  & M     & $1.3\times 10^{14}$ &   1.0~~ & 1.7  \\
+5  & g1b  & M     & $5.2\times 10^{14}$ &   1.7~~ & 4.7  & 1.127 \\
+6  & g72b & M     & $2.2\times 10^{14}$ &   1.2~~ & 2.4  & 100 Myr \\
+7  & g1c  & M     & $2.0\times 10^{14}$ &   1.2~~ & 2.3  & 1.127 \\
+8  & g8b  & M     & $1.5\times 10^{14}$ &   1.1~~ & 1.9  & 1.127 \\
+9  & g1d  & M     & $1.3\times 10^{14}$ &   1.0~~ & 1.7  & 1.127 \\
                                                      
-10 & g676 & CC    & $1.3\times 10^{14}$ &   1.0~~ & 1.7  \\
-11 & g914 & CC    & $1.2\times 10^{14}$ &   1.0~~ & 1.6  \\
-12 & g1e  & M     & $9.1\times 10^{13}$ &  0.93   & 1.3  \\
-13 & g8c  & M     & $8.5\times 10^{13}$ &  0.91   & 1.3  \\
-14 & g8d  & PreM  & $7.8\times 10^{13}$ &  0.88   & 1.2  \\
+10 & g676 & CC    & $1.3\times 10^{14}$ &   1.0~~ & 1.7  & 1.049 \\
+11 & g914 & CC    & $1.2\times 10^{14}$ &   1.0~~ & 1.6  & 1.049 \\
+12 & g1e  & M     & $9.1\times 10^{13}$ &  0.93   & 1.3  & 1.127 \\
+13 & g8c  & M     & $8.5\times 10^{13}$ &  0.91   & 1.3  & 1.127 \\
+14 & g8d  & PreM  & $7.8\times 10^{13}$ &  0.88   & 1.2  & 1.127 \\
 \hline
 \end{tabular}  \begin{quote}
  Notes:\\ (1) The dynamical state has been classified through a combined
@@ -192,23 +193,46 @@ Cluster & sim.'s & dyn. state$^{(1)}$ & $M_{\rm vir}^{(2)}$ & $\rvir^{(2)}$ & $k
  multiple of the critical overdensity $\rho_\rmn{crit}(z) = 3 H (z)^2/ (8\pi
  G)$.  (3) The virial temperature is defined by $kT_{\rm vir} = G M_{\rm vir} \,
  \mu\, m_\p / (2 R_{\rm vir})$, where $\mu$ denotes the mean molecular weight.
+ (4) Time difference between output snapshots; in units of Myr for g72, and 
+ remaining clusters show the ratio of the cosmological scalefactor between 
+ two snapshots.
 \end{quote}
 \label{tab:cluster_sample}
 \end{table}
 
+\section{Method}
+In this section we outline the formalism that we use to derive the CR
+electron spectra that builds up during the structure formation of
+galaxy clusters, and the expected synchrotron emission from in galaxy
+cluster that is undergoing a merger at low redshift.
 
+Our scheme is summerized by:
+\begin{itemize}
+\item derive CR proton distribution function from each simulation output at different time $t$
+\item calculate injected CR proton population between snapshots 
+\item convert injected protons to injected electrons
+\item evolve each injected CR electron population to a later time $\tend$ by
+  accounting for losses (Coulomb, inverse Compton, and adiabatic)
+\item add up the CR electron distibution for all SPH particles at time $\tend$
+\item re-accelerate CR electron distribution function at time $\tend$
+  using typical values for a merging shock in cluster outskirts
+\item calculate the synchrotron radio emission from radio relic
 
-INSERT CLUSTER TABLE WITH DELTA T HERE, USE 100 MYR, AND THE LOG A 
+\end{itemize}
 
 \subsection{CR protons}
-For each SPH fluid element we attach a distribution function of CR protons. It is represented by a one-dimensional isotropic distribution function \footnote{The three dimensional distibution function is given by $4\pi \int f(p) p^ 2 \dd p$.} given by
+For simplicity we have attach a distribution function of CR protons to
+each SPH fluid element. It is represented by a one-dimensional
+isotropic distribution function \footnote{The three dimensional
+  distibution function is given by $4\pi \int f(p)\, p^2\, \dd p$.}
+given by
 \begin{equation}
   \label{eq:f_p}
   f_\p(p_\p) = \frac{\dd^2 N_\p}{\dd p_\p\,\dd V} = 
   C\, p_\p^{-\alpha}\,\theta(p_\p-q)\,, 
 \end{equation}
 and $p_\p = P_\p/m_\p c$, where we have normalized the proton momentum
-$P_\p$ with the proton mass $m_\p$.  Here $q$ is the mass normalized
+$P_\p$ with the proton mass $m_\p$. Here $q$ is the mass normalized
 momentum cutoff, $\alpha$ the spectral index, and $C$ the
 normalization of the distribution function in units of density. 
 
@@ -217,10 +241,11 @@ $t$ the injected CR proton distribution function $f_\p$. We select
 particles in the outskirts of clusters where the gas densities are low
 and hence the Coulomb cooling of the CR protons small. }
 
-The CR proton
-distribution function from the simulations is convinently parameterized in terms of
-adiabatic invariant momentum cutoff $q_0$ and the adiabatic invariant
-Lagrangian amplitude of the spectrum $\tilde{C}_0$. We convert the adiabatic invariant quantities to physical quantities through
+The CR proton distribution function from the simulations is
+convinently parameterized in terms of adiabatic invariant momentum
+cutoff $q_0$ and the adiabatic invariant Lagrangian amplitude of the
+spectrum $\tilde{C}_0$. We convert the adiabatic invariant quantities
+to physical quantities through
 \begin{equation}
   \label{eq:q0}
   q=\left(\frac{\rho}{\rho_0}\right)^{\frac{1}{3}}q_0\,,
@@ -236,6 +261,8 @@ is given by
   \label{eq:Ct}
   \tilde{C}=C\,m_\p/\rho\,.
 \end{equation}
+
+CONTINUE FROM HERE
 
 From our simulated galaxy clusters we derive for each snapshot at time
 $t$ a CR proton distribution function $f_\p$. 
