@@ -85,8 +85,8 @@
 % --- title --- %
 \title{The origin of cosmic-ray electrons in cluster outskirts}
 
-\author[A. Pinzke, P. Oh and C. Pfrommer] 
-  {Anders Pinzke$^1$\thanks{e-mail:apinzke@physics.ucsb.edu (AP); peng@physics.ucsb.edu (PO);pfrommer@h-its.org (CP)}, Peng Oh$^1$\footnotemark[1],
+\author[A. Pinzke, S.P. Oh and C. Pfrommer] 
+  {Anders Pinzke$^1$\thanks{e-mail:apinzke@physics.ucsb.edu (AP); peng@physics.ucsb.edu (PO);pfrommer@h-its.org (CP)}, S. Peng Oh$^1$\footnotemark[1],
     and Christoph Pfrommer$^2$\footnotemark[1]\\
     $^1$University of California - Santa Barbara,
   Department of Physics, CA 93106-9530, USA\\
@@ -115,7 +115,52 @@
 
 % --- section: introduction --- %
 \section{Introduction}
+Diffuse radio emission in clusters falls into two broad classes: smooth, centrally located and unpolarized radio halos (\citet{ferrari08}, and references therein), and elongated, significantly polarized and steep spectrum radio relicsâ which are seen at cluster outskirts (\citet{kempner04}, and references therein). Both are associated with merging clusters. Radio relics are thought to come in distinct classes: fossil AGN radio lobes, which may have been re-energized by compression (â€˜radio phoenixâ€™; \citet{enslin01}), and those produced by direct Fermi-I particle acceleration at accretion/merger shocks (radio gischt; \citet{ensslin98,miniati01}). Many radio relics have now been seen ($\sim 45$; for a recent compilation, see \citet{nuza11}); the number could increase dramatically with upcoming low freqency radio surveys proposed for the Low Frequency Array (LOFAR), the Westerbork Synthesis Radio Telescope (WSRT), and farther in the future, Square Kilometer Array (SKA). Using numerical simulations combined with an semi-analytic model for radio emission calibrated to existing number counts, \citet{nuza11} estimate that LOFAR and WSRT could discover $\sim 2500$ relics and $\sim 900$ relics respectively. The time is therefore ripe to understand how we can best mine these future surveys.   
 
+In this paper, we focus on radio gischt, which trace structure formation shock waves. They therefore can illuminate the nature of cosmic accretion/mergers, as well as shock amplification of large-scale  magnetic fields \citep{pfrommer08, hoeft08, battaglia09, skillman11}. Perhaps even more importantly, they allow us to probe in detail the efficiency of shock acceleration in a diffuse, low Mach number (${\cal M} \sim 2-4$) regime far different from the high Mach number regimes probed in our Galaxy and supernova remnants. Whilst this remains poorly understood, observations seem to suggest an electron acceleration efficiency significantly in excess of naive theoretical expectiations. In this paper, we explore a promising explanation: the existence of a seed population of low energy ($\gamma \sim 200$) relic relativistic electrons from high redshift which are reaccelerated by low-redshift shocks.  
+
+A recent spectacular example of radio gischt is CIZA J2242.8+5301, the 'sausage relic'  \citep{van-weeren10}, a large ($\sim 2$ Mpc long; located $\sim 1.5$ Mpc from the cluster center) double radio relic system. The post-shock radio spectral index was used to infer the particle spectral slope and hence the shock compression ratio and Mach number (${\cal M} \sim 4.6$), while the decrease in the spectral index (from $\sim 0.6$ to $\sim 2.0$ across the relicâ narrow $\sim 55$ kpc width) toward the cluster center---spectral aging due to synchrotron and inverse Compton losses---was used to infer magnetic field strengths of $\sim 5 \, \mu$G. The strong ($\sim 50-60 \%$) polarization can be attributed to magnetic field frozen into the compressed ICM, which has been aligned parallel to the shock. The properties of this and similar systems are distinct from fossil radio plasma, which are smaller, have curved, steeper spectra (due to aging), and lobe-like morphology. The power-law spectral index, spectral gradient, and enormous extent clearly support a diffusive shock acceleration (DSA) origin. 
+
+However, this then presents a puzzle. Cosmological simulations show that while gas initially undergoes strong shocks (up to ${\cal M} \sim 10^{3}$) accreting onto non-linear structures and filaments, shocks in the ICM and cluster outskirts are relatively modest (${\cal M} \sim 1-5$), since the gas has already reached sub-keV temperatures \citep{ryu03,pfrommer06,skillman08}. While DSA is efficient in accelerating particles in the thermal Maxwellian tail at high Mach numbers \citep{bell78,drury83}, and as confirmed in observations of supernova remnants \citep{parizot06,reynolds08}, at lower Mach numbers the efficiency of DSA is known to plummet exponentially {\bf SPO: should we include a figure of this? To me this paper is motivated by 2 figures, that of the acceleration efficiency as a function of Mach number and the cooling time as a function of energy---we could put it in 1 figure.} Indeed, in the test-particle regime where suprathermal particles undergo acceleration via a thermal leakage process (which compare well against kinetic DSA simulations) the acceleration efficiency for weak shocks ${\cal M} \sim 3$ is extremely small; the fraction of protons accelerated is $\sim 10^{-4}-10^{-3}$, and cosmic ray proton pressure is $\lsim 1\%$ of the shock ram pressure \citep{kang11}. The acceleration efficiency of electrons at low Mach numbers is likely to be far smaller still. The injection problem for thermal electrons already known to be severe at high Mach numbers, due to the smaller gyroradius of thermal electrons: the relative acceleration efficiency of cosmic ray electrons is lower by $\sim 10^{-2}$ as in the Galaxy \citep{schlickeiser02} or even $\sim 10^{-4}$ as in supernova remnants \citep{morlino09}). These relative efficiencies likely plummets further at low Mach numbers. These considerations appear to contradict the appearance of bright radio relics, and perhaps suggest that our understanding of DSA at low Mach numbers is incomplete (for recent progress, see \citep{gargate12}). 
+
+A possible solution is if there is a pre-existing population of cosmic ray electrons with gyroradii comparable or larger than that of the shock thickness. In this case, injection from the thermal pool is no longer an issue \citep{markevitch05,giacintucci08,kang11}; here,  \citet{kang11} show that re-acceleration should dominate over fresh injection. %\footnote{Turbulent re-acceleration, which is thought to operate at lower Mach numbers, also requires a seed population of relativistic particles}. 
+DSA has a much larger effect on radio emission than adiabatic compression; including the downstream magnetic field amplification, synchrotron emission could be boosted by a factor $\sim 100-1000$ for ${\cal M}\sim 3$ \citep{kang11}. Thus, the luminosity function of radio gischt will be strongly modified by the presence or absence of a seed relativistic electron population, whose existence has never been directly demonstrated. In this paper, we use our existing high-resolution SPH simulations of cosmic-ray protons in clusters \citep{pinzke10} to infer whether structure formation shocks could generate them\footnote{They could also have a non-gravitational origin, such as AGN injection, though the filling factor at these large radii is likely to be small.}, taking into account the effects of electron cooling. Note that DSA operates identically on relativistic particles of the same rigidity ($R=pc/Ze$), so the injected proton and electron spectrum are the same, modulo their relative acceleration efficiency, which we conservatively calibrate off Galactic observations.%\footnote{Note, however, that at energies where protons are subrelativistic, the electron spectrum has to be obtained from the proton spectrum by extrapolating the latter from the relativistic regime.} 
+In the low-density outskirts of clusters, proton loss timescales are several Hubble times, so we can directly derive the injected energy to each SPH CRp particle directly from our existing simulation snapshots and derive an appropriate scaled injection of CR electrons (CRe). Unlike CRp, Coulomb and inverse Compton/synchrotron loss processes are more efficient and have to be taken into account (IC off the CMB, which has an equivalent energy density of $B=3.24 (1+z)^{2} \mu$G, should dominate in the outer regions). We evolve the time-dependent cosmic-ray energy equation to track the evolving distribution function of CRe. In Fig \ref{fig:ensslin}, we can see that the $\sim 10$ GeV CRe  responsible for $\sim$GHz emission in a $\mu$G field has energy loss timescales of $\sim 10^{8}$yr, but a large population of $\sim 100$ MeV electrons could build up. Note that secondary CRe which arise from hadronic interactions of CRp are not thought to be significant at these low densities, though for a dissenting view, see \citet{keshet10}. We calculate the abundance of such seed electrons from structure formation shocks in the cluster outskirts. In general, we find that they are, reaffirming radio gischt as a reliable tracer of large scale shocks and magnetic fields
+
+
+\begin{figure}[ht]
+\begin{center}
+%\resizebox{!}{5.5cm}{\includegraphics{./figures/ensslin.eps}}
+%%\resizebox{!}{5.5cm}{\includegraphics{ensslin2.pdf}}
+%\resizebox{!}{5.0cm}{\includegraphics{circles.pdf}}
+%%\hspace{0.05cm}
+%%%\vspace{-1cm} 
+\end{center}
+\caption{Cooling time of CR electrons (left panel) and CR protons (right panel) for typical conditions in the ICM. CRe can only survive for a Hubble time in the underdense outskirts of clusters; $\sim 100$MeV electrons should be the most long-lived. By contrast, CRp above 10 GeV can survive on cosmological timescales. From \citet{enslin11}. {\bf I stole this figure from EnsslinÉshould we make our own?}}
+\label{fig:ensslin} % caption for the whole figure
+\end{figure}
+
+
+The outline of this paper is as follows. {\bf Blah blah, fill in once paper is complete}. 
+
+\section{Order of Magnitude Estimates: The Production and Survival of Relic Electrons} 
+\label{sect:estimates}
+
+
+\section{Relics}
+\label{section:relics}
+RELICS...  Collisionless cluster shocks are able to accelerate ions
+and electrons in the high-energy tail of their Maxwellian distribution
+functions through diffusive shock acceleration \citep[for reviews
+  see][]{drury83, 1987PhR...154....1B,
+  2001RPPh...64..429M}. Neglecting non-linear shock acceleration and
+cosmic ray modified shock structure, then electrons and protons are
+indistinguishable in the process of diffusive shock
+acceleration. There are, however, difference in: (1) the maximum
+energy of the steady state spectrum that depends on the details of the
+shock, (2) acceleration efficiency that is related to the smaller
+Larmor radius of the electrons that keeps the electrons from diffusing
+back and forth over the discontinuity of the shock front.CHECK
 
 \section{Simulations}
 \label{sect:simulations}
@@ -142,7 +187,7 @@ i.e. outside of shocked regions \citep{2002MNRAS.333..649S}.  Our
 simulations follow the radiative cooling of the gas, star formation,
 supernova feedback, and a photo-ionizing background \citep[details can
   be found in][]{2007MNRAS.378..385P}. We model the cosmic ray (CR)
-physics in a self-consistent way \citep{2006MNRAS.367..113P,
+physics in a self-consistent way \citep{pfrommer06,
   2007A&A...473...41E, 2008A&A...481...33J}.  We include the adiabatic
 CR transport process such as compression and rarefaction, and a number
 of physical source and sink terms which modify the cosmic ray pressure
@@ -201,23 +246,23 @@ Cluster & sim.'s & state$^{(1)}$ & $M_{\rm vir}^{(2)}$ & $\rvir^{(2)}$ & $kT_{\r
 \end{table}
 
 \section{Method}
+\label{sect:method}
 In this section we outline the formalism that we use to derive the CR
 electron spectra that builds up during the structure formation of
 galaxy clusters, and the expected synchrotron emission from in galaxy
 cluster that is undergoing a merger at low redshift.
 
-Our scheme is summerized by:
+Our scheme is summarized by:
 \begin{itemize}
 \item derive CR proton distribution function from each simulation output at different time $t$
 \item calculate injected CR proton population between snapshots 
 \item convert injected protons to injected electrons
 \item evolve each injected CR electron population to a later time $\tend$ by
   accounting for losses (Coulomb, inverse Compton, and adiabatic)
-\item add up the CR electron distibution for all SPH particles at time $\tend$
+\item add up the CR electron distribution for all SPH particles at time $\tend$
 \item re-accelerate CR electron distribution function at time $\tend$
   using typical values for a merging shock in cluster outskirts
 \item calculate the synchrotron radio emission from radio relic
-
 \end{itemize}
 
 \subsection{CR protons}
@@ -262,10 +307,8 @@ is given by
   \tilde{C}=C\,m_\p/\rho\,.
 \end{equation}
 
-CONTINUE FROM HERE
-
-From our simulated galaxy clusters we derive for each snapshot at time
-$t$ a CR proton distribution function $f_\p$. 
+For each time $t$ we derive a CR proton distribution function $f_\p$
+from the snapshots of our simulated galaxy clusters.
 
 \del{We select
 particles in the outskirts of clusters where the gas densities are low
@@ -307,29 +350,13 @@ where $T_\p(p_\p) = (\sqrt{1+p_\p^2} -1)\, m_\p\,c^2$ is the kinetic energy
 of a CR proton. $\B_x(a,b)$ denotes the incomplete Beta-function, and
 $\alpha>2$ is assumed.}
 
-
-\section{Radio relics}
-\label{section:relics}
-RELICS...  Collisionless cluster shocks are able to accelerate ions
-and electrons in the high-energy tail of their Maxwellian distribution
-functions through diffusive shock acceleration \citep[for reviews
-  see][]{1983RPPh...46..973D, 1987PhR...154....1B,
-  2001RPPh...64..429M}. Neglecting non-linear shock acceleration and
-cosmic ray modified shock structure, then electrons and protons are
-indistinguishable in the process of diffusive shock
-acceleration. There are, however, difference in: (1) the maximum
-energy of the steady state spectrum that depends on the details of the
-shock, (2) acceleration efficiency that is related to the smaller
-Larmor radius of the electrons that keeps the electrons from diffusing
-back and forth over the discontinuity of the shock front.CHECK
-
+\subsection{CR electrons}
 In this section we derive the CR electron distribution function by
 rescaling the injected CR proton spectrum to account for the different
 acceleration efficiencies as well as the shift in momentum due to the
 factor $\sim 2000$ difference in mass. In addition we model the
 Coulomb and radiative losses of the CR electrons.
 
-\subsection{CR electron distribution function} 
 In a hot plasma the temperatures of electrons and protons (ions) are
 equal. Under this constraint we derive the relationship between CR
 electron momentum and CR proton momentum given by
@@ -471,8 +498,9 @@ We model the final CR electron spectrum as a superposition of five CR
 populations, each determined by Eqn.~\ref{eq:f_sum} but with a
 different spectral index and injected spectra. 
 
+\subsection{re-acceleration}
 
-\subsection{Synchrotron emission}
+\subsection{radio synchrotron emission}
 The process of merging clusters is often very violent where large
 amounts of gravitational energy being dissipated in the form of
 radiation, increased temperature, turbulence flows and shocks. The two
@@ -525,7 +553,7 @@ $P_0(1.4\,\rmn{PHz})=9\times10^{22}$~W/Hz. This is about a factor
 10-100 smaller than what is typically expected from a relic
 \cite{2009A&A...508...75V}. However, this luminosity is boosted by the
 shock or turbulence induced during a cluster merger. We follow the
-prescription outlined in \cite{2011ApJ...734...18K} to calculate the
+prescription outlined in \cite{kang11} to calculate the
 boost in radio luminosity due to reacceleration, and find that
 $P_2(1.4\,\rmn{PHz})\sim\times10^{25}$~W/Hz in agreement with several
 of the relics listed in e.g. \cite{2009A&A...508...75V}.
@@ -570,7 +598,7 @@ OUTLINE THE PRESCRIPTION eq7, eq21
 \del{Collisionless cluster shocks are able to accelerate ions and
   electrons in the high-energy tail of their Maxwellian distribution
   functions through diffusive shock acceleration \citep[for reviews
-    see][]{1983RPPh...46..973D, 1987PhR...154....1B,
+    see][]{drury83, 1987PhR...154....1B,
     2001RPPh...64..429M}.  Neglecting non-linear shock acceleration
   and cosmic ray modified shock structure, the process of diffusive
   shock acceleration uniquely determines the spectrum of the freshly
@@ -600,6 +628,9 @@ C_\e \propto \frac{\rho}
 {\eps_B + \eps_\rmn{ph}}
 \end{equation}
 }
+
+
+\section{Results}
 
 \begin{figure*}
 \begin{minipage}{2.0\columnwidth}
