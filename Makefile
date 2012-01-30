@@ -16,6 +16,7 @@ default: paper.ps
 	$(LATEX) $*.tex
 	$(LATEX) $*.tex
 	$(DVIPS) -o $*.ps $*.dvi
+	ps2pdf $*.ps 
 	make clean
 
 figures/%.eps: figures/%_raw.eps figures/%.tex

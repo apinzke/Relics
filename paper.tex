@@ -75,8 +75,9 @@
 \newcommand{\ma}{\mathrm{max}}
 \newcommand{\low}{\mathrm{low}}
 \newcommand{\gae}{\gamma_\mathrm{e}}
+\newcommand{\gap}{\gamma_\mathrm{p}}
 \newcommand{\gam}{\gamma}
-\newcommand{\tend}{t_\rmn{end}}
+\newcommand{\tend}{t_f}
 
 
 
@@ -147,21 +148,6 @@ The outline of this paper is as follows. {\bf Blah blah, fill in once paper is c
 \label{sect:estimates}
 
 
-\section{Relics}
-\label{section:relics}
-RELICS...  Collisionless cluster shocks are able to accelerate ions
-and electrons in the high-energy tail of their Maxwellian distribution
-functions through diffusive shock acceleration \citep[for reviews
-  see][]{drury83, 1987PhR...154....1B,
-  2001RPPh...64..429M}. Neglecting non-linear shock acceleration and
-cosmic ray modified shock structure, then electrons and protons are
-indistinguishable in the process of diffusive shock
-acceleration. There are, however, difference in: (1) the maximum
-energy of the steady state spectrum that depends on the details of the
-shock, (2) acceleration efficiency that is related to the smaller
-Larmor radius of the electrons that keeps the electrons from diffusing
-back and forth over the discontinuity of the shock front.CHECK
-
 \section{Simulations}
 \label{sect:simulations}
 Our simulations were performed in a $\Lambda$CDM universe using the
@@ -188,11 +174,12 @@ simulations follow the radiative cooling of the gas, star formation,
 supernova feedback, and a photo-ionizing background \citep[details can
   be found in][]{2007MNRAS.378..385P}. We model the cosmic ray (CR)
 physics in a self-consistent way \citep{pfrommer06,
-  2007A&A...473...41E, 2008A&A...481...33J}.  We include the adiabatic
-CR transport process such as compression and rarefaction, and a number
-of physical source and sink terms which modify the cosmic ray pressure
-of each CR population separately. The most important sources
-considered for injection are, diffusive shock acceleration at
+  2007A&A...473...41E, 2008A&A...481...33J} and attach a CR proton
+distribution function to each SPH fluid element. We include the
+adiabatic CR transport process such as compression and rarefaction,
+and a number of physical source and sink terms which modify the cosmic
+ray pressure of each CR population separately. The most important
+sources considered for injection are, diffusive shock acceleration at
 cosmological structure formation shocks and shock waves in supernova
 remnants, while the primary sinks are thermalization by Coulomb
 interactions, and catastrophic losses by hadronization. For
@@ -239,7 +226,7 @@ Cluster & sim.'s & state$^{(1)}$ & $M_{\rm vir}^{(2)}$ & $\rvir^{(2)}$ & $kT_{\r
  G)$.  (3) The virial temperature is defined by $kT_{\rm vir} = G M_{\rm vir} \,
  \mu\, m_\p / (2 R_{\rm vir})$, where $\mu$ denotes the mean molecular weight.
  (4) Time difference between output snapshots; in units of Myr for g72, and 
- remaining clusters show the ratio of the cosmological scalefactor between 
+ remaining clusters show the ratio of the cosmological scale factor between 
  two snapshots.
 \end{quote}
 \label{tab:cluster_sample}
@@ -247,12 +234,13 @@ Cluster & sim.'s & state$^{(1)}$ & $M_{\rm vir}^{(2)}$ & $\rvir^{(2)}$ & $kT_{\r
 
 \section{Method}
 \label{sect:method}
-In this section we outline the formalism that we use to derive the CR
-electron spectra that builds up during the structure formation of
-galaxy clusters, and the expected synchrotron emission from in galaxy
-cluster that is undergoing a merger at low redshift.
+In this section we explain both the method that we use to derive the
+CR electron distribution function that builds up during the structure
+formation process of galaxy clusters, and the formalism for
+calculating synchrotron emission from in galaxy cluster that is
+undergoing a merger at low redshifts.
 
-Our scheme is summarized by:
+Our scheme is summarized in decending order by the following bullet points:
 \begin{itemize}
 \item derive CR proton distribution function from each simulation output at different time $t$
 \item calculate injected CR proton population between snapshots 
@@ -266,31 +254,25 @@ Our scheme is summarized by:
 \end{itemize}
 
 \subsection{CR protons}
-For simplicity we have attach a distribution function of CR protons to
-each SPH fluid element. It is represented by a one-dimensional
+The CR protons in the simulations are represented by a one-dimensional
 isotropic distribution function \footnote{The three dimensional
-  distibution function is given by $4\pi \int f(p)\, p^2\, \dd p$.}
+  distribution function is given by $4\pi \int f(\gam)\, \gam^2\, \dd \gam$.}
 given by
 \begin{equation}
   \label{eq:f_p}
-  f_\p(p_\p) = \frac{\dd^2 N_\p}{\dd p_\p\,\dd V} = 
-  C\, p_\p^{-\alpha}\,\theta(p_\p-q)\,, 
+  f_\p(\gap) = \frac{\dd^2 N_\p}{\dd \gap\,\dd V} = 
+  C\, \gap^{-\alpha}\,\theta(\gap-q)\,, 
 \end{equation}
-and $p_\p = P_\p/m_\p c$, where we have normalized the proton momentum
+and $\gap \approx P_\p/m_\p c$, where we have normalized the proton momentum
 $P_\p$ with the proton mass $m_\p$. Here $q$ is the mass normalized
 momentum cutoff, $\alpha$ the spectral index, and $C$ the
 normalization of the distribution function in units of density. 
 
-\del{From our simulated galaxy clusters we derive for each snapshot at time
-$t$ the injected CR proton distribution function $f_\p$. We select
-particles in the outskirts of clusters where the gas densities are low
-and hence the Coulomb cooling of the CR protons small. }
-
-The CR proton distribution function from the simulations is
-convinently parameterized in terms of adiabatic invariant momentum
-cutoff $q_0$ and the adiabatic invariant Lagrangian amplitude of the
-spectrum $\tilde{C}_0$. We convert the adiabatic invariant quantities
-to physical quantities through
+To improve the numerical efficiency of the simulations the CR proton
+distribution function is parametrized in terms of adiabatic invariant
+momentum cutoff $q_0$ and the adiabatic invariant Lagrangian amplitude
+of the spectrum $\tilde{C}_0$. We convert the adiabatic invariant
+quantities to physical quantities through
 \begin{equation}
   \label{eq:q0}
   q=\left(\frac{\rho}{\rho_0}\right)^{\frac{1}{3}}q_0\,,
@@ -307,99 +289,68 @@ is given by
   \tilde{C}=C\,m_\p/\rho\,.
 \end{equation}
 
-For each time $t$ we derive a CR proton distribution function $f_\p$
-from the snapshots of our simulated galaxy clusters.
+\del{We select particles in the outskirts of clusters where the gas
+  densities are low and hence the Coulomb cooling of the CR protons
+  small.}
 
-\del{We select
-particles in the outskirts of clusters where the gas densities are low
-and hence the Coulomb cooling of the CR protons small.}
-
-The injected distribution function is calculated as the change in
-CR normalization between a snapshot at time $t$ and an earlier time 
-$t-\Delta t$:
+The CR electron distribution function can not be derived directly
+from the CR protons because of the different timescales of
+losses. Instead we first need to derive the injected CR proton
+distribution function between each snapshot.  The injected distribution
+function is calculated as the change in CR normalization between a
+snapshot at time $t$ and an earlier time $t-\Delta t$:
 \begin{eqnarray}
   \label{eq:finj}
-f_\rmn{inj,p}(t,p_\p) &=& \Delta C(t)\,\frac{\rho}{m_\p}\,\rmn{AD(\rho)} \,p_\p^{-\alpha}\qquad\rmn{where}\\
+f_\rmn{inj,p}(t,\gap) &=& \Delta C(t)\,\frac{\rho}{m_\p}\,\rmn{X(\rho)} \,
+\gap^{-\alpha}\qquad\rmn{where}\\
   \Delta  C(t) &=& C(t) - C(t-\Delta t)\,
 \end{eqnarray}
-and the adiabatic cooling term $\rmn{AD}(\rho)\equiv\left(\rho/\rho_0\right)^{-1/3}$.
+and the adiabatic cooling term
+$\rmn{X}(\rho)\equiv\left(\rho/\rho_0\right)^{-1/3}$. The time between
+snapshots is denoted by $\Delta t$ and is shown in
+Table~\ref{tab:cluster_sample} for each simulated cluster. Note that
+for most clusters we can not resolve the cooling timescale of CR
+electrons, and hence we over predict the abundance of electrons for
+low and high momenta (see Figure~\ref{fig:e_spec_tests} for more
+details) for some clusters. Although, in the region between $\gamma ~
+(10-10^3)$ is small enough to resolve the cooling processes.
 
-We fix the time between each snapshot $\Delta t$ to $100$~Myrs, which
-is smaller then the loss timescale of CR electrons in cluster
-outskirts. 
-
-\del{The CR proton number density is given by
-\begin{equation}
-  \label{eq:ncr}
-  n_{\CR} = \int_0^\infty \dd p_\p\, f_\p(p_\p) =
-  \frac{C\, q^{1-\alpha}}{\alpha-1}\,,
-\end{equation}
-provided $\alpha >1$. The kinetic energy density of the CR
-proton population is
-\begin{eqnarray}
-  \label{eq:epscr}
-  \eps_\CR &=& \int_0^\infty  \dd p_\p\, f_\p(p_\p) \,T_{\rmn
-    p}(p_\p)=\frac{C\, m_\p\,c^2}{\alpha-1} \, \times
-  \nonumber \\
-  && \left[\frac{1}{2}
-    \, \B_{\frac{1}{1+q^2}} \left(
-    \frac{\alpha-2}{2},\frac{3-\alpha}{2}\right) + q^{1-\alpha}
-    \left(\sqrt{1+q^2}-1 \right) \right] \,,
-\end{eqnarray}
-where $T_\p(p_\p) = (\sqrt{1+p_\p^2} -1)\, m_\p\,c^2$ is the kinetic energy
-of a CR proton. $\B_x(a,b)$ denotes the incomplete Beta-function, and
-$\alpha>2$ is assumed.}
 
 \subsection{CR electrons}
-In this section we derive the CR electron distribution function by
-rescaling the injected CR proton spectrum to account for the different
-acceleration efficiencies as well as the shift in momentum due to the
-factor $\sim 2000$ difference in mass. In addition we model the
-Coulomb and radiative losses of the CR electrons.
-
-In a hot plasma the temperatures of electrons and protons (ions) are
-equal. Under this constraint we derive the relationship between CR
-electron momentum and CR proton momentum given by
-%\begin{eqnarray}
-%  \label{eq:pe_pp}
-%\dd \Pe = \dd \Pp \frac{\sqrt{\Pe^2+2\left(m_\e c\right)^2-2m_\e m_\p\,c^2
-%+2\left(m_\p-m_\e\right)c\sqrt{\left(m_\e c\right)^2+\Pe^2}}}{\Pe+\left(m_\p-m_\e\right) c \frac{\Pe}{\sqrt{\left(m_\e c\right)^2+\Pe^2}}}
-%\end{eqnarray}
-\begin{eqnarray}
-  \label{eq:pe_pp}
-\dd \pe &=& \dd \pp \,g(\pe) =  \dd \pp \,h(\pp)\,,\qquad \rmn{where}\\
-g(\pe) &=& X \,\frac{\left[\pe^2-2\left(X-1\right)\left(1-\sqrt{1+\pe^2}\right)\right]^{0.5}}{\displaystyle\pe+\left(X-1\right)\frac{\pe}{\sqrt{1+\pe^2}}}\,,\qquad \rmn{and}\\
-h(\pp) &=& X \,\frac{\displaystyle\pp-\left(1-Y\right)\frac{\pp}{\sqrt{1+\pp^2}}}{\left[\pp^2+2\left(1-Y\right)\left(1-\sqrt{1+\pp^2}\right)\right]^{0.5}}\,.\\
-\end{eqnarray}
-Note that $\pe = \Pe/m_\e c$ and $\pp = \Pp/m_\p c$, where we have
-normalized the electron momentum $\Pe$ and the proton momentum $\Pp$
-with the electron mass $m_\e$ and proton mass $m_\p$, respectively. We
-have introduced the mass ratios $X=m_\p/m_\e$ and $Y=m_\e/m_\p$. Also
-note that $\dd \Pe\rightarrow \dd \Pp$ in the asymptotic limit where
-$\pp\gg 1$, and that $\dd \Pe\rightarrow \sqrt{m_\e / m_\p}\,\dd \Pp$ for
-$\pp\ll 1$. 
+The main difference between the CR electrons and CR protons comes from
+the less efficent acceleration of the electrons due to the smaller
+gyroradius, and typically the larger losses. We derive the CR electron
+distribution function by renormalizing the injected CR proton spectrum to
+account for the different acceleration efficiencies as well as the
+shift in momentum due to the factor $\sim 2000$ difference in mass. In
+addition we model the Coulomb and radiative losses of the CR
+electrons.
 
 The injected CR electron distribution function at each time $t$ is
 given by
 \begin{eqnarray}
   \label{eq:f_inj_e}
-  f_\rmn{inj,e}(p_\e) &=&  \frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd p_\e}(p_\e) = 
-\frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd p_\p}(p_\e)\frac{1}{g(p_\e)} \nonumber\\
-&=& \frac{\dd^2 N_\rmn{inj,p}}{\dd V \dd p_\p}(p_\p)
-\left(\frac{p_\e}{p_\p}\right)^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{1}{g(p_\e)} = 
-\Delta C\,p_\e^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}\frac{1}{g(p_\e)}\,.
+  f_\rmn{inj,e}(\gae,t) &\equiv&  
+\frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd \gap}(\gae,t) = 
+\frac{\dd^2 N_\rmn{inj,e}}{\dd V \dd \gae}(\gae,t)\,Y \nonumber\\
+&=& \frac{\dd^2 N_\rmn{inj,p}}{\dd V \dd \gap}(\gap,t)
+\left(\frac{\gae}{\gap}\right)^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}Y = 
+\Delta C(t)\,\gae^{-\alpha}\frac{\eta_\rmn{max,e}}{\eta_\rmn{max,p}}Y\,.
  \nonumber\\
-&&
+&& \\
+\rmn{where}&& Y=\frac{m_\p}{m_\e}
 \end{eqnarray}
 We use that maximal 50\% of the energy available in a shock is
 injected into CR protons ($\eta_\rmn{max,p}$) and a factor 10 smaller
-efficiency of 5\% for the CR electrons ($\eta_\rmn{max,e}$).
+efficiency of 5\% for the CR electrons ($\eta_\rmn{max,e}$). Note that
+for readability we now drop the electron index $\e$ on the lorentz
+factor $\gae$ for the electrons. 
 
 The CR electrons cool through inverse Compton (IC) emission and
 Coulomb losses on timescales that are relative short compared to the
 dynamical timescale of a cluster. We model these looses analytically
-by instantiniuosly injecting a power-law of electrons at time $t_i$
-and evolving it to a later time $t$ (for further details see
+by instantaneously injecting a power-law of electrons at time $t_i$
+and evolving it to a later time $t_f$ (for further details see
 \citep{1999ApJ...520..529S}). The loss of energy for each particle is
 described by
 \begin{equation}
@@ -425,20 +376,27 @@ b_\rmn{C}(t)$ \footnote{We use a constant energy $\gamma=10^2$ to
   model the very weak dependence of energy, and note that the
   particular value of $\gamma$ does not matter as long as
   $\gamma\gg1$.}. We can now derive the shift in energy $\gam_i$ at
-time $t_i$ to energy $\gam$ at time $t$ due to Coulomb cooling by
+time $t_i$ to energy $\gam_f$ at time $t_f$ due to Coulomb cooling by
 integrating Eqn.~(\ref{eq:d_cool}):
 \begin{eqnarray}
   \label{eq:gamma_low}
-  \gam_\low \equiv\int_{t_i}^{t}\dd t b_\rmn{C}(t) = 
-  -\int_{\gam_i}^{\gam}\dd \gam' = -(\gam-\gam_i)\,.
+  \gam_\low \equiv\int_{t_i}^{t_f}\dd t \, b_\rmn{C}(t) = 
+  -\int_{\gam_i}^{\gam_f}\dd \gam' = -(\gam_f-\gam_i)\,.
 \end{eqnarray}
-Since we have discrete snapshots in time we can approximate 
+Beacuse the snapshots are descrete in time, we approximate the low
+momentum cut-off between time $t_i$ and the later time $t_f$ by
 \begin{eqnarray}
   \label{eq:gamma_low_sum}
-  \gam_\low = \Delta t \sum_j b_\rmn{C}(t_j)\,,
+  \gam_\low \approx \sum_{j=i}^{f} \gam_\low(\Delta t_j) \approx
+  \sum_{j=i}^{f} \Delta t_j \left[b_\rmn{C}(t_{j-1}) + b_\rmn{C}(t_j)\right]/2\,,
 \end{eqnarray}
-where the sum includes all snapshots from time $t_i$ to time $t$. We
-now continue with the IC losses that are given by
+where $j$ denotes the summation over all snapshots between time $t_i$
+and the later time $t_f$. Here we have approximated the low momentum
+cut-off between two snapshots by the mean given by $\gam_\low(\Delta
+t_j) = \Delta t_j \left[b_\rmn{C}(t_{j-1})+ b_\rmn{C}(t_j)\right]/2$,
+where $\Delta t_j = t_j - t_{j-1}$. 
+
+We now continue with the IC losses that are given by
 \begin{equation}
   \label{eq:b_IC}
   b_\IC(\gam,z) = b_\IC \gam^2 (1+z)^4
@@ -452,119 +410,83 @@ of a particle subject to IC losses through
   \label{eq:b_IC_evolu}
 \frac{\dd \gam}{\gam^2} = -b_\IC (1+z)^4\dd t\,.
 \end{equation}
-After a time $(t-t_i)$ has elapsed, all the electrons with
+After a time $(t_f-t_i)$ has elapsed, all the electrons with
 energies above $\gam_\ma$ have thermalized, where we derive $\gam_\ma$
 through integrating Eqn.~(\ref{eq:b_IC_evolu}) from injected time
-$z_i=z(t_i)$ to a later time $z=z(t)$:
+$z_i=z(t_i)$ to a later time $z_f=z(t_f)$:
 \begin{equation}
   \label{eq:b_max}
-   \frac{1}{\gam_\ma} \equiv \frac{1}{\gam} - \frac{1}{\gam_i} = 
-   \frac{b_\IC}{H_0}\left[\Lambda(z)-\Lambda(z_i)\right]\,.
+   \frac{1}{\gam_\ma} \equiv \frac{1}{\gam_f} - \frac{1}{\gam_i} = 
+   \frac{b_\IC}{H_0}\left[\Lambda(z_f)-\Lambda(z_i)\right]\,.
 \end{equation}
 Here $\Lambda(z) \approx z + 1.23\,z^2 + 0.50\,z^3 - 0.14\,z^4 -
 0.04\,z^5$ in a Lambda CDM universe and
-$H_0=h\,\rmn{km}\,\rmn{s}^{-1}\,\rmn{Mpc}^{-1}$ is the Hubble constant.
+$H_0=100\,h\,\rmn{km}\,\rmn{s}^{-1}\,\rmn{Mpc}^{-1}$ is the Hubble constant.
 
 Given an initial energy $\gam_i$ of an electron at time $t_i$,
-Eqn.~(\ref{eq:d_cool}) can be integrated to give the value of $\gam$
-at a later time $t$. The differential population density for
-relativistic electrons ($\gam_\e \approx p_\e = P_\e/m_\e c$) is then
-given by
+Eqn.~(\ref{eq:d_cool}) can be integrated to give the value of $\gam_f$
+at a later time $t_f$. The differential population density for
+relativistic electrons is then given by
 \begin{eqnarray}
 \label{eq:f_evolv}
-f_\rmn{inj,e}(\gam,t,t_i) &=& f_\rmn{inj,e}(\gam_i,t_i)
-\left.\frac{\partial\gam_i}{\partial\gam}\right|_t\,,\quad \rmn{where} \\
+f_\rmn{inj,e}(\gam_f,t_f,t_i) &=& f_\rmn{inj,e}(\gam_i,t_i)
+\left.\frac{\partial\gam_i}{\partial\gam_f}\right|_{t_f}\,,\quad \rmn{where} \\
  f_\rmn{inj,e}(\gam_i,t_i) &=& 
-f_\rmn{inj,e}(\gam-\Delta\gam_\IC-\Delta\gam_\rmn{C},t_i) \nonumber\\
-&=& f_\rmn{inj,e}(\gam+\frac{\gam^2}{\gam_\ma-\gam}+\gam_\low,t_i)\,,\quad \rmn{and} \\
-\frac{\partial\gam_i}{\partial\gam} &=& 
-\frac{\gam_\ma^2}{\left(\gam_\ma-\gam\right)^2}\,.
+f_\rmn{inj,e}(\gam_f-\Delta\gam_\IC-\Delta\gam_\rmn{C},t_i) \nonumber\\
+&=& f_\rmn{inj,e}(\gam_f+\frac{\gam_f^2}{\gam_\ma-\gam_f}+\gam_\low,t_i)\,,\quad \rmn{and} \\
+\frac{\partial\gam_i}{\partial\gam_f} &=& 
+\frac{\gam_\ma^2}{\left(\gam_\ma-\gam_f\right)^2}\,.
 \end{eqnarray}
 Here we have used that $\Delta\gam_\IC=-\gam_\low$ and
-$\Delta\gam_\rmn{C}=\frac{-\gam^2}{\gam_\ma-\gam}$. The total electron
+$\Delta\gam_\rmn{C}=\frac{-\gam_f^2}{\gam_\ma-\gam_f}$. The total electron
 spectrum is derived from the sum of all individually cooled injected
 spectra, starting from the time of injection $t_i$ until a later time
-$t$,
+$t_f$,
 \begin{eqnarray}
 \label{eq:f_sum}
-f_\rmn{tot,e}(\gam,t) = \left(\frac{\tilde{\rho}_{gas}(t)}{\rho_0}\right)^{-1/3}\sum_j f_\rmn{inj,e}(\gam,t,t_j)\,.
+f_\rmn{tot,e}(\gam_f,t_f) = 
+\left(\frac{\tilde{\rho}(t_f)}{\rho_0}\right)^{-1/3}\sum_j f_\rmn{inj,e}(\gam_f,t_f,t_j)\,.
 \end{eqnarray}
-Here the comoving gas density factor $\rho_{gas}(t)$ takes care of the
-adiabatic gains and losses, where $\rho_0=1$ is a reference density in
-GADGET. Also note that the electrons injected at time $t=t_i$ have not
-had the time to cool yet. 
+Here the comoving gas density factor $\tilde{\rho}=\rho\,(z+1)^3$ takes care of the
+adiabatic gains and losses, where $\rho_0=1$ is a reference comoving density in
+GADGET. \del{Also note that the electrons injected at time $t=t_i$ have not
+had the time to cool yet.}
 
 We model the final CR electron spectrum as a superposition of five CR
-populations, each determined by Eqn.~\ref{eq:f_sum} but with a
+populations, each determined by Eqn.~\ref{eq:f_sum}, but with a
 different spectral index and injected spectra. 
 
 \subsection{re-acceleration}
 
-\subsection{radio synchrotron emission}
 The process of merging clusters is often very violent where large
 amounts of gravitational energy being dissipated in the form of
 radiation, increased temperature, turbulence flows and shocks. The two
 latter processes are believed to accelerate CRs to high energy, where
 especially the distribution function of preexisting CRs is
-enhanced. In this section we use the smooth CR electron distribution
-derived from a simulated merging cluster in the previous section,
-boost it using the details of the shock, and then finally derive the
-radio synchrotron emission.
-
-We fit the steady state CR electron distribution function in
-Fig.~\ref{fig:e_spec} with two power-laws
-\begin{equation}
-  f_\rmn{e,fit}(\gam_\e) = C_1\,\gam_\e^{-\alpha_1}
-\theta(\gam_\rmn{break}-\gam_\e) 
-+ C_2\,\gam_\e^{-\alpha_2}
-\theta(\gam_\e-\gam_\rmn{break})\,. 
-\label{eq:f_fit}
-\end{equation}
-The best fit CR electron normalization is given by ${\bf
-  C}=(6\times10^{-4},\,10^{7})$, the spectral index by ${\bf
-  \alpha}=(3.0,5.5)$, and the energy where the slope changes by
-$\gam_\rmn{break}=1.2\times10^4$.
-
-\C{Probably need to calculate the emissivity numerically since there
-  is a break in the power-law spectrum. CHECK} We calculate the radio
-synchrotron emissivity of the CR electrons using \cite{1979rpa..book.....R}
-\begin{equation}
-J_0(\nu) \approx \left(\frac{e^2\,\nu_c}{c}\right)\,\sum_i C_i
-\gam\left(\frac{3 \alpha_i-1}{12}\right)\,\gam\left(\frac{3 \alpha_i+19}{12}\right)\frac{3^\frac{\alpha_i}{2}}{\alpha_i+1}\,\left(\frac{\nu}{\nu_c}\right)^{\frac{1-\alpha}{2}}\,,
-\end{equation}
-where the cyclotron frequency is given by
-$\nu_c=e\,B\,c/(2\pi\mecc)$. We derive the total emitted power from
-the source by integrating the emissivity over the target volume. Here,
-we assume that the target volume haw an uniform distribution of the
-CR electrons, hence the total power per unit frequency is given by
-\begin{equation}
-  P_0(\nu) = \rmn{Volume} \times J_0(\nu)\,.
-\end{equation}
+enhanced. We use the CR electron distribution described in previous
+section, boost it using the details of the shock, and then finally
+calculate the radio synchrotron emission.
 
 NEED TO REWRITE The typical size of a large relic is of the order of a
 Mpc, while the thickness is only of the order 100~kpc. We assume that
 the rather unknown extension of the relic along the line of sight to
 be about 500~kpc, where the total radio emitting volume is about
-$0.05~\rmn{Mpc}^3$. In addition we assume that the average magnetic
-field in the cluster outskirts to be of the order
-$B\approx0.1\,\mu$G. The total emitted power at 1.4 PHz of the size
-typical for a large radio Relic is then given by
-$P_0(1.4\,\rmn{PHz})=9\times10^{22}$~W/Hz. This is about a factor
-10-100 smaller than what is typically expected from a relic
-\cite{2009A&A...508...75V}. However, this luminosity is boosted by the
-shock or turbulence induced during a cluster merger. We follow the
-prescription outlined in \cite{kang11} to calculate the
-boost in radio luminosity due to reacceleration, and find that
-$P_2(1.4\,\rmn{PHz})\sim\times10^{25}$~W/Hz in agreement with several
-of the relics listed in e.g. \cite{2009A&A...508...75V}.
+$0.05~\rmn{Mpc}^3$. 
 
-The steady-state test-particle solution of the downstream CR
-distribution can be written as a function of the pre-existing CRs through
+Note that we neglect the contribution from the thermal electrons that
+are accelerated in the same shock. The reason for this is that for
+shocks with a Mach number $\lesssim 3$ since CRs that was shown in
+\cite{kang11} to .
+
+We follow the prescription outlined in \cite{kang11} to calculate the
+steady-state test-particle solution of the downstream CR distribution
+that can be written as a function of the pre-existing CRs through
 \begin{equation}
-  f_2(\gae) = q \gae^{-q}\int_{\gam_\rmn{inj}}^\gam \gam'^{q-1}
-   f_\rmn{e,fit}(\gam')\dd \gam'\,.
+  f_\rmn{re-acc,e}(\gae) = q \gae^{-q}\int_{\gam_\rmn{inj}}^\gam \gam'^{q-1}
+   f_\rmn{tot,e}(\gam')\dd \gam'\,.
 \end{equation}
-Here we have neglected the contribution from the injected CRs. The lowest momentum boundary above which particles can cross the shock is given by 
+The lowest momentum boundary above which particles can cross the shock
+is given by
 \begin{equation}
 \gam_\rmn{inj} \approx 1.17 \frac{u_2}{c}\left(1+\frac{1.07}{\epsilon_B}\right)
 \left(\frac{M}{3}\right)^{0.1}\,.
@@ -585,53 +507,38 @@ $\sigma=[(\gam_\rmn{ad}+1)M^2]/[(\gam_\rmn{ad}-1)M^2+2]$, where
 adiabatic index $\gam_\rmn{ad}=5/3$, $M_A=M c_s/v_A$, and $ c_s$ the
 upstream sound speed.
 
-Enhanced emissivity calculated with
+
+\subsection{radio synchrotron emission}
+In addition we assume that the average magnetic
+field in the cluster outskirts to be of the order
+$B\approx0.1\,\mu$G. The total emitted power at 1.4 PHz of the size
+typical for a large radio Relic is then given by
+$P_0(1.4\,\rmn{PHz})=9\times10^{22}$~W/Hz. This is about a factor
+10-100 smaller than what is typically expected from a relic
+\cite{2009A&A...508...75V}. However, this luminosity is boosted by the
+shock or turbulence induced during a cluster merger. We follow the
+prescription outlined in \cite{kang11} to calculate the
+boost in radio luminosity due to reacceleration, and find that
+$P_2(1.4\,\rmn{PHz})\sim\times10^{25}$~W/Hz in agreement with several
+of the relics listed in e.g. \cite{2009A&A...508...75V}.
+
+ We calculate the radio synchrotron emissivity of the CR electrons
+ using \cite{1979rpa..book.....R}
 \begin{equation}
-\frac{J_2(\nu)}{J_0(\nu)} \approx \left(\frac{B_2^{\left(r-1\right)/2}}{B_0^{\left(\alpha-1\right)/2}}\right) \,\left[\frac{f_2(\gae)}{f_0(\gae)}\right]_{\gae=10^4}\,
-\left(\frac{\nu}{280\,\rmn{MHz}}\right)^{\left(\alpha-r\right)/2}\,.
+J(\nu) \approx \left(\frac{e^2\,\nu_c}{c}\right)\,\sum_i C_i
+\gam\left(\frac{3 \alpha_i-1}{12}\right)\,\gam\left(\frac{3 \alpha_i+19}{12}\right)\frac{3^\frac{\alpha_i}{2}}{\alpha_i+1}\,\left(\frac{\nu}{\nu_c}\right)^{\frac{1-\alpha}{2}}\,,
 \end{equation}
-
-
-OUTLINE THE PRESCRIPTION eq7, eq21
-
-
-\del{Collisionless cluster shocks are able to accelerate ions and
-  electrons in the high-energy tail of their Maxwellian distribution
-  functions through diffusive shock acceleration \citep[for reviews
-    see][]{drury83, 1987PhR...154....1B,
-    2001RPPh...64..429M}.  Neglecting non-linear shock acceleration
-  and cosmic ray modified shock structure, the process of diffusive
-  shock acceleration uniquely determines the spectrum of the freshly
-  injected relativistic electron population in the post-shock region
-  that cools and finally diminishes as a result of loss
-  processes. \del{The inverse Compton emitting electron population
-    cools on such a short time scale $\tau_\rmn{sync} < 10^8$~yrs
-    (compared to the very long dynamical time scale $\tau_\rmn{dyn}
-    \sim 1$~Gyr) that we can describe this by instantaneous
-    cooling. In this approximation, there is no steady-state electron
-    population and we would have to convert the energy from the
-    electrons to inverse Compton (IC) and synchrotron
-    radiation. Instead, we introduce a virtual electron population
-    that lives in the SPH-broadened shock volume only; this is defined
-    to be the volume where energy dissipation takes place. Within this
-    volume, which is co-moving with the shock, we can use the
-    steady-state solution for the distribution function of
-    relativistic electrons and we assume no relativistic electrons in
-    the post-shock volume, where no energy dissipation occurs. Thus,
-    the cooled CR electron equilibrium spectrum can be derived from
-    balancing the shock injection with the IC/synchrotron cooling:
-    above a GeV it is given by}
+where the cyclotron frequency is given by
+$\nu_c=e\,B\,c/(2\pi\mecc)$. We derive the total emitted power from
+the source by integrating the emissivity over the target volume. Here,
+we assume that the target volume haw an uniform distribution of the
+CR electrons, hence the total power per unit frequency is given by
 \begin{equation}
-\label{eq:f_eq}
-f_\e(E) = C_\e\, E^{-\alpha_\e}, \quad
-C_\e \propto \frac{\rho}
-{\eps_B + \eps_\rmn{ph}}
+  P_0(\nu) = \rmn{Volume} \times J_0(\nu)\,.
 \end{equation}
-}
 
 
 \section{Results}
-
 \begin{figure*}
 \begin{minipage}{2.0\columnwidth}
   \includegraphics[width=0.32\columnwidth]{./figures/f_z.g72a.1.4Rv.a24.full.v20.eps}
