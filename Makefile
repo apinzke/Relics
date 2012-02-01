@@ -1,6 +1,8 @@
 # Makefile to produce the article.
-LATEX  =  TEXINPUTS=.//: BSTINPUTS=.//: latex
-DVIPS  =  dvips
+#LATEX   =  TEXINPUTS=.//: BSTINPUTS=.//: latex
+LATEX   =  latex
+DVIPS   =  dvips
+BIBTEX  =  bibtex
 FIGURES = 
 
 .PRECIOUS: $(FIGURES)
@@ -9,12 +11,13 @@ default: paper.ps
 
 %.ps :  $(FIGURES) %.tex
 	$(LATEX) $*.tex
-	TEXINPUTS=:.// BSTINPUTS=:.// bibtex $*
-	cat $*.bbl | sed 's/, \\&/, /' > tmp.bbl
-	mv tmp.bbl $*.bbl
-	$(LATEX) $*.tex
-	$(LATEX) $*.tex
-	$(LATEX) $*.tex
+#	TEXINPUTS=:.// BSTINPUTS=:.// bibtex $*
+#	cat $*.bbl | sed 's/, \\&/, /' > tmp.bbl
+#	mv tmp.bbl $*.bbl
+	$(BIBTEX) $*.aux	
+	$(LATEX)  $*.tex
+	$(LATEX)  $*.tex
+	$(LATEX)  $*.tex
 	$(DVIPS) -o $*.ps $*.dvi
 	ps2pdf $*.ps 
 	make clean

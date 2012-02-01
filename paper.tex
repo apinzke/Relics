@@ -8,7 +8,9 @@
 \def\del#1{{}}
 %\def\del#1{{\bf (DELETED TEXT)}}
 %\def\C#1{#1}
-\def\C#1{{\bf #1}}
+\def\AP#1{{\bf AP: #1}}
+\def\SPO#1{{\bf SPO: #1}}
+\def\CP#1{{\bf CP: #1}}
 
 \sloppy
 
@@ -115,33 +117,44 @@
 
 % --- section: introduction --- %
 \section{Introduction}
-Diffuse radio emission in clusters falls into two broad classes: smooth, centrally located and unpolarized radio halos \citep[][ and references therein]{ferrari08}, and elongated, significantly polarized and steep spectrum radio relics‚ which are seen at cluster outskirts \citep[][ and references therein]{kempner04}. Both are associated with merging clusters. Radio relics are thought to come in distinct classes: fossil AGN radio lobes, which may have been re-energized by compression (‚Äòradio phoenix‚Äô; \citet{ensslin01}), and those produced by direct Fermi-I particle acceleration at accretion/merger shocks (radio gischt; \citet{ensslin98,miniati01}). Many radio relics have now been seen ($\sim 45$; for a recent compilation, see \citet{nuza11}); the number could increase dramatically with upcoming low frequency radio surveys proposed for the Low Frequency Array (LOFAR), the Westerbork Synthesis Radio Telescope (WSRT), and farther in the future, Square Kilometer Array (SKA). Using numerical simulations combined with an semi-analytic model for radio emission calibrated to existing number counts, \citet{nuza11} estimate that LOFAR and WSRT could discover $\sim 2500$ relics and $\sim 900$ relics respectively. The time is therefore ripe to understand how we can best mine these future surveys.   
+\label{sect:intro}
+Diffuse radio emission in clusters falls into two broad classes: smooth, centrally located and unpolarized radio halos \citep[][ and references therein]{ferrari08}, and elongated, significantly polarized and steep spectrum radio relics‚ which are seen at cluster outskirts \citep[][ and references therein]{kempner04}. Both are associated with merging clusters. Radio relics are thought to come in distinct classes: fossil AGN radio lobes, which may have been re-energized by compression \citep[‚Äòradio phoenix‚Äô;][]{ensslin01}, and those produced by direct Fermi-I particle acceleration at accretion/merger shocks \citep[radio gischt;][]{ensslin98,miniati01}. Many radio relics have now been seen \citep[$\sim 45$; for a recent compilation, see][]{nuza11}; the number could increase dramatically with upcoming low frequency radio surveys proposed for the Low Frequency Array (LOFAR), the Westerbork Synthesis Radio Telescope (WSRT), and farther in the future, Square Kilometer Array (SKA). Using numerical simulations combined with an semi-analytic model for radio emission calibrated to existing number counts, \citet{nuza11} estimate that LOFAR and WSRT could discover $\sim 2500$ relics and $\sim 900$ relics respectively. The time is therefore ripe to understand how we can best mine these future surveys.   
 
-In this paper, we focus on radio gischt, which trace structure formation shock waves. They therefore can illuminate the nature of cosmic accretion/mergers, as well as shock amplification of large-scale  magnetic fields \citep{pfrommer08, hoeft08, battaglia09, skillman11}. Perhaps even more importantly, they allow us to probe in detail the efficiency of shock acceleration in a diffuse, low Mach number ($\mach \sim 2-4$) regime far different from the high Mach number regimes probed in our Galaxy and supernova remnants. Whilst this remains poorly understood, observations seem to suggest an electron acceleration efficiency significantly in excess of naive theoretical expectiations. In this paper, we explore a promising explanation: the existence of a seed population of low energy ($\gamma \sim 200$) relic relativistic electrons from high redshift which are reaccelerated by low-redshift shocks.  
+In this paper, we focus on radio gischt, which trace structure formation shock waves. They therefore can illuminate the nature of cosmic accretion/mergers, as well as shock amplification of large-scale  magnetic fields \citep{pfrommer08, hoeft08, battaglia09, skillman11}. Perhaps even more importantly, they allow us to probe in detail the efficiency of shock acceleration in a diffuse, low Mach number ($\mach \sim 2-4$) regime far different from the high Mach number regimes probed in our Galaxy and supernova remnants. Whilst this remains poorly understood, observations seem to suggest an electron acceleration efficiency significantly in excess of naive theoretical expectations. In this paper, we explore a promising explanation: the existence of a seed population of low energy ($\gamma \sim 200$) relic relativistic electrons from high redshift which are reaccelerated by low-redshift shocks.  
 
-A recent spectacular example of radio gischt is CIZA J2242.8+5301, the 'sausage relic'  \citep{van-weeren10}, a large ($\sim 2$ Mpc long; located $\sim 1.5$ Mpc from the cluster center) double radio relic system. The post-shock radio spectral index was used to infer the particle spectral slope and hence the shock compression ratio and Mach number ($\mach \sim 4.6$), while the decrease in the spectral index (from $\sim 0.6$ to $\sim 2.0$ across the relic‚ narrow $\sim 55$ kpc width) toward the cluster center---spectral aging due to synchrotron and inverse Compton losses---was used to infer magnetic field strengths of $\sim 5 \, \mu$G. The strong ($\sim 50-60 \%$) polarization can be attributed to magnetic field frozen into the compressed ICM, which has been aligned parallel to the shock. The properties of this and similar systems are distinct from fossil radio plasma, which are smaller, have curved, steeper spectra (due to aging), and lobe-like morphology. The power-law spectral index, spectral gradient, and enormous extent clearly support a diffusive shock acceleration (DSA) origin. 
+A recent spectacular example of radio gischt is CIZA J2242.8+5301, the 'sausage relic' \citep{van-weeren10}, a large ($\sim 2$ Mpc long; located $\sim 1.5$ Mpc from the cluster center) double radio relic system. The post-shock radio spectral index was used to infer the particle spectral slope and hence the shock compression ratio and Mach number ($\mach \sim 4.6$), while the decrease in the spectral index (from $\sim 0.6$ to $\sim 2.0$ across the relic‚ narrow $\sim 55$ kpc width) toward the cluster center---spectral aging due to synchrotron and inverse Compton losses---was used to infer magnetic field strengths of $\sim 5 \, \mu$G. The strong ($\sim 50-60 \%$) polarization can be attributed to magnetic field frozen into the compressed ICM, which has been aligned parallel to the shock. The properties of this and similar systems are distinct from fossil radio plasma, which are smaller, have curved, steeper spectra (due to aging), and lobe-like morphology. The power-law spectral index, spectral gradient, and enormous extent clearly support a diffusive shock acceleration (DSA) origin. 
 
-However, this then presents a puzzle. Cosmological simulations show that while gas initially undergoes strong shocks (up to $\mach \sim 10^{3}$) accreting onto non-linear structures and filaments, shocks in the ICM and cluster outskirts are relatively modest ($\mach \sim 1-5$), since the gas has already reached sub-keV temperatures \citep{ryu03,pfrommer06,skillman08}. While DSA is efficient in accelerating particles in the thermal Maxwellian tail at high Mach numbers \citep{bell78,drury83}, and as confirmed in observations of supernova remnants \citep{parizot06,reynolds08}, at lower Mach numbers the efficiency of DSA is known to plummet exponentially {\bf SPO: should we include a figure of this? To me this paper is motivated by 2 figures, that of the acceleration efficiency as a function of Mach number and the cooling time as a function of energy---we could put it in 1 figure.} Indeed, in the test-particle regime where suprathermal particles undergo acceleration via a thermal leakage process (which compare well against kinetic DSA simulations) the acceleration efficiency for weak shocks $\mach \sim 3$ is extremely small; the fraction of protons accelerated is $\sim 10^{-4}-10^{-3}$, and cosmic ray proton pressure is $\lsim 1\%$ of the shock ram pressure \citep{kang11}. The acceleration efficiency of electrons at low Mach numbers is likely to be far smaller still. The injection problem for thermal electrons already known to be severe at high Mach numbers, due to the smaller gyroradius of thermal electrons: the relative acceleration efficiency of cosmic ray electrons is lower by $\sim 10^{-2}$ as in the Galaxy \citep{schlickeiser02} or even $\sim 10^{-4}$ as in supernova remnants \citep{morlino09}). These relative efficiencies likely plummets further at low Mach numbers. These considerations appear to contradict the appearance of bright radio relics, and perhaps suggest that our understanding of DSA at low Mach numbers is incomplete (for recent progress, see \citep{gargate12}). 
+However, this then presents a puzzle. Cosmological simulations show that while gas initially undergoes strong shocks (up to $\mach \sim 10^{3}$) accreting onto non-linear structures and filaments, shocks in the ICM and cluster outskirts are relatively modest ($\mach \sim 1-5$), since the gas has already reached sub-keV temperatures \citep{ryu03,pfrommer06,skillman08}. While DSA is efficient in accelerating particles in the thermal Maxwellian tail at high Mach numbers \citep{bell78,drury83}, and as confirmed in observations of supernova remnants \citep{parizot06,reynolds08}, at lower Mach numbers the efficiency of DSA is known to plummet exponentially \SPO{should we include a figure of this? To me this paper is motivated by 2 figures, that of the acceleration efficiency as a function of Mach number and the cooling time as a function of energy---we could put it in 1 figure.} Indeed, in the test-particle regime where suprathermal particles undergo acceleration via a thermal leakage process (which compare well against kinetic DSA simulations) the acceleration efficiency for weak shocks $\mach \sim 3$ is extremely small; the fraction of protons accelerated is $\sim 10^{-4}-10^{-3}$, and cosmic ray proton pressure is $\lsim 1\%$ of the shock ram pressure \citep{kang11}. The acceleration efficiency of electrons at low Mach numbers is likely to be far smaller still. The injection problem for thermal electrons already known to be severe at high Mach numbers, due to the smaller gyroradius of thermal electrons: the relative acceleration efficiency of cosmic ray electrons is lower by $\sim 10^{-2}$ as in the Galaxy \citep{schlickeiser02} or even $\sim 10^{-4}$ as in supernova remnants \citep{morlino09}. These relative efficiencies likely plummets further at low Mach numbers. These considerations appear to contradict the appearance of bright radio relics, and perhaps suggest that our understanding of DSA at low Mach numbers is incomplete \citep[for recent progress, see][]{gargate12}. 
 
-A possible solution is if there is a pre-existing population of cosmic ray electrons with gyroradii comparable or larger than that of the shock thickness. In this case, injection from the thermal pool is no longer an issue \citep{markevitch05,giacintucci08,kang11}; here,  \citet{kang11} show that re-acceleration should dominate over fresh injection. %\footnote{Turbulent re-acceleration, which is thought to operate at lower Mach numbers, also requires a seed population of relativistic particles}. 
+A possible solution is if there is a pre-existing population of cosmic ray electrons with gyroradii comparable or larger than that of the shock thickness. In this case, injection from the thermal pool is no longer an issue \citep{markevitch05,giacintucci08,kang11}; here, \citet{kang11} show that re-acceleration should dominate over fresh injection. %\footnote{Turbulent re-acceleration, which is thought to operate at lower Mach numbers, also requires a seed population of relativistic particles}. 
 DSA has a much larger effect on radio emission than adiabatic compression; including the downstream magnetic field amplification, synchrotron emission could be boosted by a factor $\sim 100-1000$ for $\mach \sim 3$ \citep{kang11}. Thus, the luminosity function of radio gischt will be strongly modified by the presence or absence of a seed relativistic electron population, whose existence has never been directly demonstrated. In this paper, we use our existing high-resolution SPH simulations of cosmic-ray protons in clusters \citep{pinzke10} to infer whether structure formation shocks could generate them\footnote{They could also have a non-gravitational origin, such as AGN injection, though the filling factor at these large radii is likely to be small.}, taking into account the effects of electron cooling. Note that DSA operates identically on relativistic particles of the same rigidity ($R=pc/Ze$), so the injected proton and electron spectrum are the same, modulo their relative acceleration efficiency, which we conservatively calibrate off Galactic observations.%\footnote{Note, however, that at energies where protons are subrelativistic, the electron spectrum has to be obtained from the proton spectrum by extrapolating the latter from the relativistic regime.} 
-In the low-density outskirts of clusters, proton loss timescales are several Hubble times, so we can directly derive the injected energy to each SPH CRp particle directly from our existing simulation snapshots and derive an appropriate scaled injection of CR electrons (CRe). Unlike CRp, Coulomb and inverse Compton/synchrotron loss processes are more efficient and have to be taken into account (IC off the CMB, which has an equivalent energy density of $B=3.24 (1+z)^{2} \mu$G, should dominate in the outer regions). We evolve the time-dependent cosmic-ray energy equation to track the evolving distribution function of CRe. In Fig \ref{fig:ensslin}, we can see that the $\sim 10$ GeV CRe  responsible for $\sim$GHz emission in a $\mu$G field has energy loss timescales of $\sim 10^{8}$yr, but a large population of $\sim 100$ MeV electrons could build up. Note that secondary CRe which arise from hadronic interactions of CRp are not thought to be significant at these low densities, though for a dissenting view, see \citet{keshet10}. We calculate the abundance of such seed electrons from structure formation shocks in the cluster outskirts. In general, we find that they are, reaffirming radio gischt as a reliable tracer of large scale shocks and magnetic fields
+In the low-density outskirts of clusters, proton loss timescales are several Hubble times, so we can directly derive the injected energy to each SPH CRp particle directly from our existing simulation snapshots and derive an appropriate scaled injection of CR electrons (CRe). Unlike CRp, Coulomb and inverse Compton/synchrotron loss processes are more efficient and have to be taken into account (IC off the CMB, which has an equivalent energy density of $B_\CMB=3.24 (1+z)^{2} \mu$G, should dominate in the outer regions). We evolve the time-dependent cosmic-ray energy equation to track the evolving distribution function of CRe. In Fig~\ref{fig:ensslin}, we can see that the $\sim 10$ GeV CRe responsible for $\sim$GHz emission in a $\mu$G field has energy loss timescales of $\sim 10^{8}$yr, but a large population of $\sim 100$ MeV electrons could build up. Note that secondary CRe which arise from hadronic interactions of CRp are not thought to be significant at these low densities, though for a dissenting view, see \citet{keshet10}. We calculate the abundance of such seed electrons from structure formation shocks in the cluster outskirts. In general, we find that they are, reaffirming radio gischt as a reliable tracer of large scale shocks and magnetic fields
 
 
-\begin{figure}[ht]
+\begin{figure}%[ht]
 \begin{center}
-%\resizebox{!}{5.5cm}{\includegraphics{./figures/ensslin.eps}}
+\resizebox{!}{5.5cm}{\includegraphics{./figures/timescales.eps}}
 %%\resizebox{!}{5.5cm}{\includegraphics{ensslin2.pdf}}
 %\resizebox{!}{5.0cm}{\includegraphics{circles.pdf}}
 %%\hspace{0.05cm}
 %%%\vspace{-1cm} 
 \end{center}
-\caption{Cooling time of CR electrons (left panel) and CR protons (right panel) for typical conditions in the ICM. CRe can only survive for a Hubble time in the underdense outskirts of clusters; $\sim 100$MeV electrons should be the most long-lived. By contrast, CRp above 10 GeV can survive on cosmological timescales. From \citet{ensslin11}. {\bf I stole this figure from Ensslin…should we make our own?}}
+\caption{Cooling time of CR electrons (left panel) and CR protons (right panel) for typical conditions in the ICM. CRe can only survive for a Hubble time in the underdense outskirts of clusters; $\sim 100$MeV electrons should be the most long-lived. By contrast, CRp above 10 GeV can survive on cosmological timescales. From \citet{ensslin11}. \SPO{I stole this figure from Ensslin …should we make our own?}}
 \label{fig:ensslin} % caption for the whole figure
 \end{figure}
 
+\begin{figure}%[ht]
+\begin{center}
+\resizebox{!}{5.5cm}{\includegraphics{./figures/etamax.eps}}
+\end{center}
+\caption{Acceleration efficiency as a function of Mach number and
+  spectral index. Need to remake figure, smaller Mach number range,
+  fewer lines.}
+\label{fig:etamax} 
+\end{figure}
 
-The outline of this paper is as follows. {\bf Blah blah, fill in once paper is complete}. 
+The outline of this paper is as follows. {\bf Blah blah, fill in once
+  paper is complete}.
 
 \section{Order of Magnitude Estimates: The Production and Survival of Relic Electrons} 
 \label{sect:estimates}
@@ -183,8 +196,12 @@ cosmological structure formation shocks and shock waves in supernova
 remnants, while the primary sinks are thermalization by Coulomb
 interactions, and catastrophic losses by hadronization. For
 simplicity, in this paper we do not take into account CRs injected
-into the inter-stellar medium from supernova remnants (see Pinzke, Oh,
-and Pfrommer, in prep. for a discussion of this topic).
+into the inter-stellar medium from supernova remnants. Although, note
+that the contribution from the CR electrons that are accelerated in
+supernova remnants is expected to be negligible compared to the CR
+electron population the ICM, because of the much shorter cooling times
+associated with the remnants. IS THIS TRUE? \del{(see Pinzke, Oh, and
+  Pfrommer, in prep. for a discussion of this topic).}
 
 
 \begin{table}
@@ -237,16 +254,18 @@ Cluster & sim.'s & state$^{(1)}$ & $M_{\rm vir}^{(2)}$ & $\rvir^{(2)}$ & $kT_{\r
 In this section we explain both the method that we use to derive the
 CR electron distribution function that builds up during the structure
 formation process of galaxy clusters, and the formalism for
-calculating synchrotron emission from in galaxy cluster that is
+calculating synchrotron emission from galaxy clusters that are
 undergoing a merger at low redshifts.
 
-Our scheme is summarized in descending order by the following bullet points:
+Our scheme is summarized, in order, by the following bullet points:
 \begin{itemize}
-\item derive CR proton distribution function from each simulation output at different time $t$
+\item derive CR proton distribution function from each simulation
+  output at different time $t$
 \item calculate injected CR proton population between snapshots 
 \item convert injected protons to injected electrons
-\item evolve each injected CR electron population to a later time $\tend$ by
-  accounting for losses (Coulomb, inverse Compton, and adiabatic)
+\item evolve each injected CR electron population to a later time
+  $\tend$ while accounting for losses (Coulomb, inverse Compton, and
+  adiabatic)
 \item add up the CR electron distribution for all SPH particles at time $\tend$
 \item re-accelerate CR electron distribution function at time $\tend$
   using typical values for a merging shock in cluster outskirts
@@ -254,10 +273,10 @@ Our scheme is summarized in descending order by the following bullet points:
 \end{itemize}
 
 \subsection{CR protons}
-The CR protons in the simulations are represented by a one-dimensional
-isotropic distribution function \footnote{The three dimensional
-  distribution function is given by $4\pi \int f(\gam)\, \gam^2\, \dd \gam$.}
-given by
+The CR protons in are represented by an isotropic one-dimensional
+power-law distribution function \footnote{The three-dimensional
+  distribution function is given by $4\pi \int f(\gam)\, \gam^2\, \dd
+  \gam$.}  given by
 \begin{equation}
   \label{eq:f_p}
   f_\p(\gap) = \frac{\dd^2 N_\p}{\dd \gap\,\dd V} = 
@@ -265,11 +284,11 @@ given by
 \end{equation}
 and the Lorentz factor $\gap \approx P_\p/m_\p c$, where we have
 normalized the proton momentum $P_\p$ with the proton mass
-$m_\p$. Here $q$ is the mass normalized momentum cutoff, $\alpha$ the
-spectral index, and $C$ the normalization of the distribution function
-in units of density.
+$m_\p$. Here $q$ is the proton mass normalized momentum cutoff,
+$\alpha$ the spectral index, and $C$ the normalization of the
+distribution function in units of density.
 
-To improve the numerical efficiency of the simulations the CR proton
+To improve the numerical efficiency of our simulations the CR proton
 distribution function is parameterized in terms of adiabatic invariant
 momentum cutoff $q_0$ and the adiabatic invariant Lagrangian amplitude
 of the spectrum $\tilde{C}_0$. We convert the adiabatic invariant
@@ -295,11 +314,12 @@ is given by
   small.}
 
 The CR electron distribution function can not be derived directly from
-the CR protons because of the different timescales of loss
-processes. Instead we first need to derive the injected CR proton
-distribution function between each snapshot.  The injected
-distribution function is calculated as the change in CR normalization
-between a snapshot at time $t$ and an earlier time $t-\Delta t$:
+the CR protons because of the different injection efficiencies and the
+timescales of loss processes. Instead we first need to derive the
+injected CR proton distribution function between each snapshot.  The
+injected distribution function is calculated as the change in CR
+normalization between a snapshot at time $t$ and an earlier time
+$t-\Delta t$:
 \begin{eqnarray}
   \label{eq:finj}
 f_\rmn{inj,p}(t,\gap) &=& \Delta C_0(t)\,\frac{\rho}{m_\p}\,
@@ -310,10 +330,10 @@ The time between snapshots is denoted by $\Delta t$ and is shown in
 Table~\ref{tab:cluster_sample} for each simulated cluster. Note that
 for most clusters we can not resolve the cooling timescale of CR
 electrons, and hence we over estimate the abundance of electrons for
-low and high momenta for some clusters (see
+low- and high-momenta for some clusters (see
 Figure~\ref{fig:e_spec_tests} for more details). Although, in the
-region between $\gamma \sim (10-10^3)$ is small enough to resolve the
-cooling processes.
+region between $\gamma \sim (3-5\times10^2)$ the typical cooling times
+are small enough to be resolved by our simulations.
 
 
 \subsection{CR electrons}
@@ -328,7 +348,7 @@ losses of the CR electrons.
 
 \subsubsection{injection}
 The injected CR electron distribution function at each time $t$ is
-given by
+related to the injected CR protons through
 \begin{eqnarray}
   \label{eq:f_inj_e}
   f_\rmn{inj,e}(\gae,t) &\equiv&  
@@ -346,13 +366,14 @@ efficiency of 5\% for the CR electrons ($\eta_\rmn{max,e}$). Note that
 for readability we drop from here on the electron index $\e$ on the
 Lorentz factor $\gae$ for the electrons.
 
+
 \subsubsection{cooling}
 The CR electrons cool through inverse Compton (IC) emission and
 Coulomb losses on timescales that are relative short compared to the
 dynamical timescale of a cluster. We model these looses analytically
 by instantaneously injecting a power-law of electrons at time $t_i$
-and evolving it to a later time $t_f$ (for further details see
-\citep{1999ApJ...520..529S}). The loss of energy for each particle is
+and evolving it to a later time $t_f$ \citep[for further details
+  see][]{1999ApJ...520..529S}. The loss of energy for each particle is
 described by
 \begin{equation}
 \label{eq:d_cool}
@@ -385,36 +406,36 @@ integrating Eqn.~(\ref{eq:d_cool}):
   -\int_{\gam_i}^{\gam_f}\dd \gam' = -(\gam_f-\gam_i)\,.
 \end{eqnarray}
 Because the snapshots are discrete in time, we approximate the low
-momentum cut-off between time $t_i$ and the later time $t_f$ by
+momentum cut-off between time $t_i$ and the later time $t_f$ by a discrete sum;
 \begin{eqnarray}
   \label{eq:gamma_low_sum}
   \gam_\low \approx \sum_{j=i+1}^{f} \gam_\low(\Delta t_j) \approx
   \sum_{j=i+1}^{f} \Delta t_j \left[b_\rmn{C}(t_{j-1}) + b_\rmn{C}(t_j)\right]/2\,,
 \end{eqnarray}
-where $j$ denotes the summation over all snapshots between time $t_i$
-and the later time $t_f$. Here we have approximated the low momentum
-cut-off between two snapshots by the mean given by $\gam_\low(\Delta
-t_j) = \Delta t_j \left[b_\rmn{C}(t_{j-1})+ b_\rmn{C}(t_j)\right]/2$,
-where $\Delta t_j = t_j - t_{j-1}$. 
+where $j$ denotes the summation index that run over all snapshots
+between time $t_i$ and the later time $t_f$. Here we have approximated
+the low momentum cut-off between two snapshots by the mean given by
+$\gam_\low(\Delta t_j) = \Delta t_j \left[b_\rmn{C}(t_{j-1})+
+  b_\rmn{C}(t_j)\right]/2$, where $\Delta t_j = t_j - t_{j-1}$.
 
 We now continue with the IC losses that are given by
 \begin{equation}
   \label{eq:b_IC}
   b_\IC(\gam,z) = b_\IC \gam^2 (1+z)^4
-  = \frac{4}{3}\frac{\sigma_\rmn{T}}{m_\e c} U_\rmn{cmb} \gam^2\,.
+  = \frac{4}{3}\frac{\sigma_\rmn{T}}{m_\e c} U_\CMB \gam^2\,.
 \end{equation}
 Here $\sigma_\rmn{T}= 8\pi e^4/3(m_\e c^2)^2$ is the Thomson cross
-section and $U_\rmn{cmb}$ is the energy density of the CMB at redshift
+section and $U_\CMB=B_\CMB^2/8\pi$ is the energy density of the CMB at redshift
 $z=0$. Similarly to the Coulomb cooling we derive the evolution of energy 
 of a particle subject to IC losses through
 \begin{equation}
   \label{eq:b_IC_evolu}
 \frac{\dd \gam}{\gam^2} = -b_\IC (1+z)^4\dd t\,.
 \end{equation}
-After a time $(t_f-t_i)$ has elapsed, all the electrons with momentum
-above $\gam_\ma$ have thermalized, where we derive $\gam_\ma$ through
-integrating Eqn.~(\ref{eq:b_IC_evolu}) from the time $z_i=z(t_i)$
-where the electrons are injected to a later time $z_f=z(t_f)$:
+When a time $(t_f-t_i)$ has elapsed, all the electrons with momentum
+above $\gam_\ma$ have thermalized. We derive $\gam_\ma$ by integrating
+Eqn.~(\ref{eq:b_IC_evolu}) from the redshift $z_i=z(t_i)$ where the
+electrons are injected to a later time $z_f=z(t_f)$:
 \begin{equation}
   \label{eq:b_max}
    \frac{1}{\gam_\ma} \equiv \frac{1}{\gam_f} - \frac{1}{\gam_i} = 
@@ -435,77 +456,126 @@ f_\rmn{inj,e}(\gam_f,t_f,t_i) &=& f_\rmn{inj,e}(\gam_i,t_i)
  f_\rmn{inj,e}(\gam_i,t_i) &=& 
 f_\rmn{inj,e}(\gam_f-\Delta\gam_\IC-\Delta\gam_\rmn{C},t_i) \nonumber\\
 &=& f_\rmn{inj,e}(\gam_f+\frac{\gam_f^2}{\gam_\ma-\gam_f}+\gam_\low,t_i)\,,\quad \rmn{and} \\
-\frac{\partial\gam_i}{\partial\gam_f} &=& 
+\left.\frac{\partial\gam_i}{\partial\gam_f}\right|_{t_f} &=& 
 \frac{\gam_\ma^2}{\left(\gam_\ma-\gam_f\right)^2}\,.
 \end{eqnarray}
 Here we have used that $\Delta\gam_\IC=-\gam_\low$ and
-$\Delta\gam_\rmn{C}=\frac{-\gam_f^2}{\gam_\ma-\gam_f}$. The total electron
-spectrum is derived from the sum of all individually cooled injected
-spectra, starting from the time of injection $t_i$ until a later time
-$t_f$,
+$\Delta\gam_\rmn{C}=\frac{-\gam_f^2}{\gam_\ma-\gam_f}$. The total
+electron spectrum is derived from the sum of all individually cooled
+injected spectra, starting from the time of injection $t_i$ until a
+later time $t_f$,
 \begin{eqnarray}
-\label{eq:f_sum}
-f_\rmn{tot,e}(\gam_f,t_f) = 
-\left(\frac{\tilde{\rho}(t_f)}{\rho_0}\right)^{-1/3}\sum_j f_\rmn{inj,e}(\gam_f,t_f,t_j)\,.
+  \label{eq:f_sum}
+  f_\rmn{tot,e}(\gam_f,t_f) = 
+  \left(\frac{\tilde{\rho}(t_f)}{\rho_0}\right)^{-1/3}\sum_j f_\rmn{inj,e}(\gam_f,t_f,t_j)\,.
 \end{eqnarray}
 Here the comoving gas density factor $\tilde{\rho}=\rho\,(z+1)^3$
-takes care of the adiabatic gains and losses (see Eqns.\ref{eq:C0} and
-\ref{eq:q0}), where $\rho_0=1$ is a reference comoving density in
+takes care of the adiabatic gains and losses (see Eqns.\ref{eq:q0} and
+\ref{eq:C0}), where $\rho_0=1$ is a reference comoving density in
 GADGET. \del{Also note that the electrons injected at time $t=t_i$
   have not had the time to cool yet.}
 
-We model the final CR electron spectrum as a superposition of five CR
-populations, each determined by Eqn.~\ref{eq:f_sum}, but with a
-different spectral index and injected spectra. 
+We model the final CR electron \AP{distribution} function as a
+superposition of two CR populations, each determined by
+Eqn.~\ref{eq:f_sum}, but with a different spectral index
+($\alpha=[2.1, 2.3]$) and injected normalization $C$ derived from the
+simulations. The spectral index bins includes all CR electrons with
+$\alpha \leq 2.4$, which corresponds to a $\mach > 4.7$. For weaker
+shocks we expect the functional form of the injection efficiency of the
+electrons to greatly deviate from the protons due to the injection
+problem that we discussed in Sect.~\ref{sect:intro}. In
+Figure~\ref{fig:e_spec_tests} we show how different cuts in $\alpha$
+impact the CR electron distribution function. 
 
-\subsection{re-acceleration}
+\del{CR electron distribution function is derived from summing up 1000
+  SPH particles. Show figure with convergence study.}
+
+
+\subsection{CR electrons -- reacceleration}
+\label{sect:reacc}
 Accretion and merger events in galaxy clusters are often very violent,
-and large amounts of gravitational energy being dissipated in the form
-of radiation, increased temperature, turbulent flows and shocks. The
-radio synchrotron emission from the accelerated electrons from this
-type of events has been observed in close to 50 clusters, and in
-addition there are merging shocks that only are observed in X-rays
-without any counterpart in radio. The typical size of a large relic is
-of the order of a Mpc, while the thickness is only of the order
-100~kpc. Usually the radio relics are detected in the cluster
-outskirts where the gas can reach keV temperatures, hence the shocks
-are typically weak ($\mach\lesssim 3.5$) in this part of the
-clusters. Since the weak shocks are very inefficient in accelerating
-thermal electrons to high energies, we neglect this contribution, and
-only consider the (re)acceleration of the pre-existing CR electrons.
+and large amounts of gravitational energy is being dissipated in the
+form of radiation, increased temperature, turbulent flows and
+shocks. The shock accelerated electrons emit radio synchrotron
+emission that has been observed in close to 50 clusters, and in
+addition there are merger shocks that only are observed in X-rays
+without any counterpart in radio. The typical size of the shocked gas
+that emit in radio (radio relics) is of the order of a Mpc with a
+thickness of the order 100~kpc. Usually these relics are detected in
+the cluster outskirts where the gas can reach keV temperatures which
+result in typically weak shock ($\mach\lesssim 5$). Since the weak
+shocks are very inefficient in accelerating thermal electrons to high
+energies, we neglect this contribution in this work, and only consider
+the reaccelerated pre-existing CR electrons.
  
 We follow the prescription outlined in \cite{kang11} to calculate the
 steady-state test-particle solution of the downstream CR distribution
 that can be written as a function of the pre-existing CRs through
+\begin{eqnarray}
+  f_\rmn{re-acc,e}(\gae) &=& q\,\gae^{-q} C_\rmn{re-acc}\,,\qquad\rmn{where}\\
+C_\rmn{re-acc}&=& \int_{\gam_\rmn{inj}}^{\gam_\rmn{cut}} \gam'^{q-1}
+  f_\rmn{tot,e}(\gam')\dd \gam'\,.
+\end{eqnarray}
+The integral is cut above the momentum $\gam_\rmn{cut} \sim
+5\times10^2$ that roughly corresponds to the momentum where our
+formalism for the CR electrons break down due to insufficient time
+resolution. The lowest momentum boundary above which particles can
+cross the shock is given by
 \begin{equation}
-  f_\rmn{re-acc,e}(\gae) = q \gae^{-q}\int_{\gam_\rmn{inj}}^\gam \gam'^{q-1}
-   f_\rmn{tot,e}(\gam')\dd \gam'\,.
+  \gam_\rmn{inj} \approx 1.17 \frac{u_2}{c}\left(1+\frac{1.07}{\epsilon_B}\right)
+  \left(\frac{\mach}{3}\right)^{0.1}\,,
 \end{equation}
-The lowest momentum boundary above which particles can cross the shock
-is given by
+and the one dimensional spectral index of the reaccelerated CR
+electrons is derived from
 \begin{equation}
-\gam_\rmn{inj} \approx 1.17 \frac{u_2}{c}\left(1+\frac{1.07}{\epsilon_B}\right)
-\left(\frac{\mach}{3}\right)^{0.1}\,.
+  q = \frac{\left(u_1-v_A\right)+2u_2}{u_1-v_A-u_2} = 
+  \frac{\sigma\left(1-\mach_A^{-1}\right)+2}{\sigma-1-\sigma \mach_A^{-1}}\,.
 \end{equation}
-
-Spectral index
-\begin{equation}
-q(\mach) = \frac{3\left(u_1-v_ A\right)}{u_1-v_A-u_2} = 
-\frac{3\sigma\left(1-\mach_A^{-1}\right)}{\sigma-1-\sigma \mach_A^{-1}}
-\end{equation}
-where $u_1$ and $u_2$ are the speed in the shock rest frame of the
-flow upstream and downstream, respectively. The compression ratio is
-given by $\sigma=u_1/u_2=\rho_2/\rho_1$, and $\mach_A=u_1/v_A$ is the
+Here $u_1$ and $u_2$ are the speed in the shock rest frame of the flow
+upstream and downstream, respectively. The compression ratio is given
+by $\sigma=u_1/u_2=\rho_2/\rho_1$, and $\mach_A=u_1/v_A$ is the
 upstream Alfv√©n Mach number with velocity
 $v_A=B_1/\sqrt{4\pi\rho_1}$. We derive the test-particle power-law
 slope $q$ as a function of the shock Mach number $\mach$ with
 $\sigma=[(\gam_\rmn{ad}+1)\mach^2]/[(\gam_\rmn{ad}-1)\mach^2+2]$,
-where adiabatic index $\gam_\rmn{ad}=5/3$, $\mach_A=\mach c_s/v_A$,
-and $ c_s$ the upstream sound speed.
+where the adiabatic index $\gam_\rmn{ad}=5/3$, $\mach_A=\mach
+c_s/v_A$, and $c_s$ is the upstream sound speed. We note that for a
+typical merger with $c_s \sim 500\,\rmn{km}/\rmn{s}$, $\rho \sim 500
+\rho_\rmn{crit} \Omega_\rmn{b}$ and $\mach \sim 3.5$, the spectral
+index of the CR electrons after reacceleration is given by $q \sim
+2.6$.
 
 
 \subsection{radio synchrotron emission}
-In addition we assume that the average magnetic
+ We calculate the radio synchrotron emissivity of the reaccelerated CR
+ electrons that follow a power-law distribution by using the formalism
+ derived in \cite{1979rpa..book.....R}:
+\begin{equation}
+J(\nu) \approx \frac{3^\frac{q}{2}\,e^2\,\nu_c}{c(q+1)}\,
+C_\rmn{re-acc}
+\Gamma\left(\frac{3q-1}{12}\right)\,
+\Gamma\left(\frac{3q+19}{12}\right)\,
+\left(\frac{\nu}{\nu_c}\right)^{\frac{1-q}{2}}\,,
+\end{equation}
+where the cyclotron frequency is given by
+$\nu_c=e\,B\,c/(2\pi\mecc)$. We derive the total emitted power from
+the source by integrating the emissivity over the target volume. Here,
+we assume that the target volume haw an uniform distribution of the
+CR electrons, hence the total power per unit frequency is given by
+\begin{equation}
+  P(\nu) = \rmn{Volume} \times J(\nu)\,.
+\end{equation}
+For a typical relic, $q \sim 2.6$ (see Sect.~\ref{sect:reacc}), $z
+\sim 0.1$, largest linear size (LLS) $\sim 1 \rmn{Mpc}$, thickness
+$\sim 0.1 \rmn{Mpc}$, size along line-of-sight $\sim 0.5 \rmn{Mpc}$
+(total volume $\sim 0.05\,\rmn{Mpc}^3$), we find that the flux
+$P(1.4\,\rmn{PHz})=4\times10^{23}$~W/Hz which is in the lower end of
+observations of radio relics. Although, note that this flux estimate
+is derived using the median CR electron distribution function of 14
+clusters where there is a spread of about a factor 50, that can easily
+account for the more luminous radio relics.
+
+\del{In addition we assume that the average magnetic
 field in the cluster outskirts to be of the order
 $B\approx0.1\,\mu$G. The total emitted power at 1.4 PHz of the size
 typical for a large radio Relic is then given by
@@ -516,22 +586,8 @@ shock or turbulence induced during a cluster merger. We follow the
 prescription outlined in \cite{kang11} to calculate the
 boost in radio luminosity due to reacceleration, and find that
 $P_2(1.4\,\rmn{PHz})\sim\times10^{25}$~W/Hz in agreement with several
-of the relics listed in e.g. \cite{2009A&A...508...75V}.
+of the relics listed in e.g. \cite{2009A&A...508...75V}.}
 
- We calculate the radio synchrotron emissivity of the CR electrons
- using \cite{1979rpa..book.....R}
-\begin{equation}
-J(\nu) \approx \left(\frac{e^2\,\nu_c}{c}\right)\,\sum_i C_i
-\gam\left(\frac{3 \alpha_i-1}{12}\right)\,\gam\left(\frac{3 \alpha_i+19}{12}\right)\frac{3^\frac{\alpha_i}{2}}{\alpha_i+1}\,\left(\frac{\nu}{\nu_c}\right)^{\frac{1-\alpha}{2}}\,,
-\end{equation}
-where the cyclotron frequency is given by
-$\nu_c=e\,B\,c/(2\pi\mecc)$. We derive the total emitted power from
-the source by integrating the emissivity over the target volume. Here,
-we assume that the target volume haw an uniform distribution of the
-CR electrons, hence the total power per unit frequency is given by
-\begin{equation}
-  P(\nu) = \rmn{Volume} \times J(\nu)\,.
-\end{equation}
 
 
 \section{Results}
@@ -539,6 +595,36 @@ MIGHT INCLUDE TABLE OF FEW RELIC WITH M NUMBER, SIZE, AND DISTANCE
 We assume that the rather unknown extension of the relic
 along the line of sight to be about 500~kpc, where the total radio
 emitting volume is about $0.05~\rmn{Mpc}^3$.
+
+\begin{figure}
+  \includegraphics[width=1.0\columnwidth]{./figures/CRespec.g72a.1.4Rv.a24.full.140.v20.eps}
+  \caption{Cosmic ray electron spectra in cluster outskirts at
+    redshift zero. We show the CR electron distribution function
+    weighted with the electron Lorentz factor ($\gam_\e$) squared for
+    a typical cluster with a recent merger for region between
+    (1.3-1.5)$\rvir$. The median CR spectrum is shown with full
+    cooling that includes radiative, Coulomb, and adiabatic losses
+    (dash-dotted line), and with only adiabatic losses (dashed
+    line). The solid line represents the total volume weighted CR
+    electron spectrum with full cooling. Note that the Coulomb cooling
+    at low energies is very inefficient because of the low electron
+    densities in the cluster outskirts.\label{fig:e_spec_g72a}}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=1.0\columnwidth]{./figures/CRespec.all.1.4Rv.a24.full.020.v20.eps}
+  \caption{Cosmic ray electron spectra in cluster outskirts at
+    redshift zero. We show the total volume weighted CR electron
+    distribution function in the region between (1.3-1.5)$\rvir$ with
+    full cooling that includes radiative, Coulomb, and adiabatic
+    losses. The the thin grey lines show the spectra from individual
+    clusters while the thick solid line shows the median of the
+    spectra from all clusters. Note that the CR spectra peaks at
+    $\gamma \sim 30$ for all clusters (\AP{check cooling times}, and
+    that there is about a factor 50 difference in the spectra between
+    a large merging cluster and a small cool core cluster in the
+    regime $\gamma_\e \sim (3,300)$. \label{fig:e_spec_all}}
+\end{figure}
 
 \begin{figure*}
 \begin{minipage}{2.0\columnwidth}
@@ -558,6 +644,23 @@ emitting volume is about $0.05~\rmn{Mpc}^3$.
     clusters. The shape of the distribution function is very similar
     between different cooling flow clusters, and slightly more
     stochastic for merging clusters.\label{fig:e_spec_z}}
+\end{minipage}
+\end{figure*}
+
+\begin{figure*}
+\begin{minipage}{2.0\columnwidth}
+  \includegraphics[width=0.49\columnwidth]{./figures/CRvolume.g72a.1.4Rv.a24.full.140.v20.eps}
+  \includegraphics[width=0.49\columnwidth]{./figures/CRvolume.g1a.1.4Rv.a24.full.020.v20.eps}
+  \caption{The fractional volume occupied by CR electrons in cluster
+    outskirts. Large panels (left Coma like cluster, and right massive
+    cooling flow cluster) show the fractional volume occupied by CR
+    electrons as a function of logarithmic Lorentz factor ($\gam_\e$)
+    in the region between (1.3-1.5)$\rvir$ at redshift zero. The
+    smaller panels show the logarithmic particle distribution function
+    for different $\gam_\e$, where the left peaks corresponds to
+    unpopulated SPH particles and cooled CR particles, while the right
+    peaks show the CR populated SPH
+    particles. \label{fig:e_spec_CRvolume}}
 \end{minipage}
 \end{figure*}
 
@@ -583,37 +686,10 @@ emitting volume is about $0.05~\rmn{Mpc}^3$.
     the relevant regime; red lines corresponds to 100 Myrs between
     snapshots, orange lines corresponds to ~(1.0-1.5) Gyrs between
     snapshots, and the blue lines corresponds to ~(1.0-1.5) Gyrs
-    between snapshots. \label{fig:e_spec_tests}}
+    between snapshots. \AP{Do we want to put these figures in an
+      appendix?} \label{fig:e_spec_tests}}
 \end{minipage}
 \end{figure*}
-
-\begin{figure*}
-\begin{minipage}{2.0\columnwidth}
-  \includegraphics[width=0.49\columnwidth]{./figures/CRvolume.g72a.1.4Rv.a24.full.140.v20.eps}
-  \includegraphics[width=0.49\columnwidth]{./figures/CRvolume.g1a.1.4Rv.a24.full.020.v20.eps}
-  \caption{The fractional volume occupied by CR electrons in cluster
-    outskirts. Large panels (left Coma like cluster, and right massive
-    cooling flow cluster) show the fractional volume occupied by CR
-    electrons as a function of logarithmic Lorentz factor ($\gam_\e$)
-    in the region between (1.3-1.5)$\rvir$ at redshift zero. The
-    smaller panels show the logarithmic particle distribution function
-    for different $\gam_\e$, where the left peaks corresponds to
-    unpopulated SPH particles and cooled CR particles, while the right
-    peaks show the CR populated SPH
-    particles. \label{fig:e_spec_CRvolume}}
-\end{minipage}
-\end{figure*}
-
-\begin{figure}
-  \includegraphics[width=1.0\columnwidth]{./figures/CRespec.all.1.4Rv.a24.full.020.v20.eps}
-  \caption{Cosmic ray electron spectra in cluster outskirts at
-    redshift zero. We show the total volume weighted CR electron
-    distribution function in the region between (1.3-1.5)$\rvir$ with
-    full cooling that includes radiative, Coulomb, and adiabatic
-    losses. The the thin grey lines show the spectra from individual
-    clusters while the thick solid line shows the median of the
-    spectra from all clusters. \label{fig:e_spec_all}}
-\end{figure}
 
 \begin{figure}
   \includegraphics[width=1.0\columnwidth]{./figures/old/CRespecRadial.Radial2Rv.a24.140.v16.eps}
@@ -622,24 +698,11 @@ emitting volume is about $0.05~\rmn{Mpc}^3$.
     distribution function; a Coma like cluster (left panel), a massive
     cooling flow cluster (middle panel), and the median of our 14
     cluster's spectra (right panel). The different line colors show
-    the CR electron spectra for different radial
-    bins.\label{fig:e_spec_spatial}}
+    the CR electron spectra for different radial bins. \AP{We might
+      want to put this type of figure in the second
+      paper!?!}\label{fig:e_spec_spatial}}
 \end{figure}
 
-\begin{figure}
-  \includegraphics[width=1.0\columnwidth]{./figures/CRespec.g72a.1.4Rv.a24.full.140.v20.eps}
-  \caption{Cosmic ray electron spectra in cluster outskirts at
-    redshift zero. We show the CR electron distribution function
-    weighted with the electron Lorentz factor ($\gam_\e$) squared for
-    a typical cluster with a recent merger for region between
-    (1.3-1.5)$\rvir$. The median CR spectrum is shown with full
-    cooling that includes radiative, Coulomb, and adiabatic losses
-    (dash-dotted line), and with only adiabatic losses (dashed
-    line). The solid line represents the total volume weighted CR
-    electron spectrum with full cooling. Note that the Coulomb cooling
-    at low energies is very inefficient because of the low electron
-    densities in the cluster outskirts.\label{fig:e_spec_g72a}}
-\end{figure}
 
 \del{
 \begin{figure*}
